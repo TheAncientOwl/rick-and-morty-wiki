@@ -2,6 +2,7 @@ import { ThemeProvider } from 'styled-components';
 import Navbar from './components/navbar';
 import theme from './theme';
 import { Container } from './components/ContentElements';
+import Footer from './components/footer';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
           est laborum.
         </Container>
+        <Footer />
       </ThemeProvider>
     </>
   );
