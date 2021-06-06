@@ -54,6 +54,11 @@ export const NavMenuToggleButton = styled(FaBars)`
   z-index: 100;
   top: -1000px;
 
+  cursor: pointer;
+  &:hover {
+    color: ${({ theme }) => theme.navbar.titleShadowColor};
+  }
+
   @media (max-width: ${Breakpoints.tablet}) {
     top: 1rem;
     right: 1rem;
