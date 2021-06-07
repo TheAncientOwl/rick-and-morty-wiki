@@ -10,7 +10,6 @@ export default function useData(type, options = { default: true }) {
       .catch(err => {
         console.error(err);
       });
-    console.log(data);
   }, [type]);
 
   return data.results;
