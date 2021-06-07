@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import Breakpoints from '../../Brakpoints';
 
-export const FilterContainer = styled.div(
+export const SimpleContainer = styled.div(
   ({ theme }) => css`
     display: flex;
     align-items: center;

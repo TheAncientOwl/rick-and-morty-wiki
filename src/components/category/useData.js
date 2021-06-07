@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export default function useData(type, options = { page: 1, name: '' }) {
-  const [data, setData] = useState({ results: [] });
+  const [data, setData] = useState({ info: { pages: 0 }, results: [] });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,5 +22,5 @@ export default function useData(type, options = { page: 1, name: '' }) {
     fetchData();
   }, [type, options.page, options.name]);
 
-  return data.results;
+  return [data.results, data.info.pages];
 }

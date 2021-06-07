@@ -3,11 +3,14 @@ import { Deck } from '../CardElements';
 import useData from './useData';
 import Filter from '../filter';
 import characterCardsOrNotFound from './characterCardsOrNotFound';
+import Pagination from '../pagination';
+import { SimpleContainer } from '../filter/FilterElements';
+import { moveToTopAnchor, TopAnchor } from '../TopAnchor';
 
 export default function CharactersDeck() {
   const [currentPage, setCurrentPage] = useState(1);
   const [characterName, setCharacterName] = useState('');
-  const data = useData('character', { page: currentPage, name: characterName });
+  const [data, numberOfPages] = useData('character', { page: currentPage, name: characterName });
 
   const handleFilterChange = value => {
     setCurrentPage(-1);
@@ -19,10 +22,33 @@ export default function CharactersDeck() {
     setCharacterName('');
   };
 
+  const pagination = (
+    <Pagination
+      currentPage={currentPage}
+      pages={numberOfPages}
+      onPrevClick={() => {
+        setCurrentPage(Math.max(1, currentPage - 1));
+        moveToTopAnchor();
+      }}
+      onNextClick={() => {
+        setCurrentPage(Math.min(numberOfPages, currentPage + 1));
+        moveToTopAnchor();
+      }}
+    />
+  );
+
   return (
-    <div>
-      <Filter onValueChange={handleFilterChange} onReset={handleFilterReset} defaultText='Character' />
+    <>
+      <SimpleContainer>
+        <Filter onValueChange={handleFilterChange} onReset={handleFilterReset} defaultText='Character' />
+        {pagination}
+      </SimpleContainer>
+
+      <TopAnchor />
+
       <Deck>{characterCardsOrNotFound(data)}</Deck>
-    </div>
+
+      <SimpleContainer style={{ justifyContent: 'center' }}>{pagination}</SimpleContainer>
+    </>
   );
 }
