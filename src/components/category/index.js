@@ -13,9 +13,9 @@ import {
 } from '../CardElements';
 import useData from './useData';
 
-export default function Category() {
+export default function CharactersDeck() {
   const data = useData('character');
-  console.log(data);
+
   return (
     <Deck>
       {data.map((item, index) => (
