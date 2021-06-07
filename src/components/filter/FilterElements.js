@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { FaSearchengin } from 'react-icons/fa';
 import Breakpoints from '../../Brakpoints';
 
 export const FilterContainer = styled.div(
@@ -59,11 +58,12 @@ export const FilterInput = styled.input(
   `
 );
 
-export const SearchButton = styled(FaSearchengin)(
+export const Button = styled.div(
   ({ theme }) => css`
     color: ${theme.navbar.titleColor};
-    margin: 0 0.35em;
+    margin: 0.2em 0 0 0.4em;
     font-size: 1.5em;
+    text-align: center;
 
     cursor: pointer;
 

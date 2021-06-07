@@ -19,9 +19,11 @@ export default function CharactersDeck() {
 
   const handleFilterChange = value => console.log(value);
 
+  const handleFilterReset = () => console.log('reset');
+
   return (
     <>
-      <Filter onValueChange={handleFilterChange} defaultText='Character' />
+      <Filter onValueChange={handleFilterChange} onReset={handleFilterReset} defaultText='Character' />
       <Deck>
         {data.map((item, index) => (
           <Card key={index}>

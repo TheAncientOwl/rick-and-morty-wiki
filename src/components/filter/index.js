@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { FilterContainer, FilterForm, FilterInput, FilterLabel, FilterText, SearchButton } from './FilterElements';
+import { Button, FilterContainer, FilterForm, FilterInput, FilterLabel, FilterText } from './FilterElements';
+import { FaSearchengin } from 'react-icons/fa';
+import { BiReset } from 'react-icons/bi';
 
-export default function Filter({ onValueChange, defaultText }) {
+export default function Filter({ onValueChange, onReset, defaultText }) {
   const [value, setValue] = useState(defaultText);
 
   return (
@@ -13,7 +15,16 @@ export default function Filter({ onValueChange, defaultText }) {
           <FilterInput type='text' value={value} onChange={e => setValue(e.target.value)} />
         </FilterLabel>
       </FilterForm>
-      <SearchButton onClick={() => onValueChange(value)} />
+      <Button onClick={() => onValueChange(value)}>
+        <FaSearchengin />
+      </Button>
+      <Button
+        onClick={() => {
+          setValue(defaultText);
+          onReset();
+        }}>
+        <BiReset />
+      </Button>
     </FilterContainer>
   );
 }
@@ -21,4 +32,5 @@ export default function Filter({ onValueChange, defaultText }) {
 Filter.propTypes = {
   onValueChange: PropTypes.func.isRequired,
   defaultText: PropTypes.string.isRequired,
+  onReset: PropTypes.func.isRequired,
 };
