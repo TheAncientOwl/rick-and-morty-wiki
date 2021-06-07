@@ -44,7 +44,6 @@ export const NavTitle = styled.div(
 
     @media (max-width: ${Breakpoints.phone}) {
       font-size: 1.4rem;
-      text-shadow: 0.14rem 0.14rem ${theme.navbar.titleShadowColor};
     }
   `
 );
