@@ -16,7 +16,7 @@ import Filter from '../filter';
 import NotFound from '../not-found';
 
 export default function CharactersDeck() {
-  const [shouldDefaultFetch, setShouldDefaultFetch] = useState(false);
+  const [shouldDefaultFetch, setShouldDefaultFetch] = useState(true);
   const [characterName, setCharacterName] = useState('');
   const data = useData('character', { default: shouldDefaultFetch, name: characterName });
 
