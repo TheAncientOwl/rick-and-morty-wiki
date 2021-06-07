@@ -48,29 +48,35 @@ export const NavTitle = styled.div(
   `
 );
 
-export const NavMenuToggleButton = styled(FaBars)`
-  color: ${({ theme }) => theme.navbar.titleColor};
-  position: fixed;
-  z-index: 100;
-  top: -1000px;
+export const NavMenuToggleButton = styled(FaBars)(
+  ({ theme, active }) => css`
+    color: ${theme.navbar.titleColor};
+    ${active &&
+    css`
+      color: ${theme.navbar.titleShadowColor};
+    `};
+    position: fixed;
+    z-index: 100;
+    top: -1000px;
 
-  cursor: pointer;
-  &:hover {
-    color: ${({ theme }) => theme.navbar.titleShadowColor};
-  }
+    cursor: pointer;
+    &:hover {
+      color: ${theme.navbar.titleShadowColor};
+    }
 
-  @media (max-width: ${Breakpoints.tablet}) {
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
-  }
+    @media (max-width: ${Breakpoints.tablet}) {
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+    }
 
-  @media (max-width: ${Breakpoints.phone}) {
-    top: 0.8rem;
-    right: 0.7rem;
-    font-size: 1.4rem;
-  }
-`;
+    @media (max-width: ${Breakpoints.phone}) {
+      top: 0.8rem;
+      right: 0.7rem;
+      font-size: 1.4rem;
+    }
+  `
+);
 
 export const CategoryLinksContainer = styled.div(
   ({ theme, active }) => css`
