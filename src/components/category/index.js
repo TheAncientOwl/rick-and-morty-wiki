@@ -16,17 +16,17 @@ import Filter from '../filter';
 import NotFound from '../not-found';
 
 export default function CharactersDeck() {
-  const [shouldDefaultFetch, setShouldDefaultFetch] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
   const [characterName, setCharacterName] = useState('');
-  const data = useData('character', { default: shouldDefaultFetch, name: characterName });
+  const data = useData('character', { page: currentPage, name: characterName });
 
   const handleFilterChange = value => {
-    setShouldDefaultFetch(false);
+    setCurrentPage(-1);
     setCharacterName(value);
   };
 
   const handleFilterReset = () => {
-    setShouldDefaultFetch(true);
+    setCurrentPage(1);
     setCharacterName('');
   };
 
@@ -44,21 +44,24 @@ export default function CharactersDeck() {
         <CardDetails>
           <CardName>{item.name}</CardName>
 
-          <Section>
-            <Title>Status: </Title>
-            <Subtitle>{item.status}</Subtitle>
-          </Section>
-
-          <Section>
-            <Title>Species: </Title>
-            <Subtitle>{item.species}</Subtitle>
-          </Section>
-
-          <Section>
-            <Title>Last known location: </Title>
-            <br />
-            <Subtitle>{item.location.name}</Subtitle>
-          </Section>
+          {[
+            { title: 'Status: ', subtitle: item.status },
+            { title: 'Species: ', subtitle: item.species },
+            {
+              title: 'Last known location: ',
+              subtitle: (
+                <>
+                  <br />
+                  {item.location.name}
+                </>
+              ),
+            },
+          ].map((item, index) => (
+            <Section key={index}>
+              <Title>{item.title}</Title>
+              <Subtitle>{item.subtitle}</Subtitle>
+            </Section>
+          ))}
         </CardDetails>
       </Card>
     ))

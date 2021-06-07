@@ -1,33 +1,26 @@
 import { useState, useEffect } from 'react';
 
-export default function useData(type, options = { default: true, name: '' }) {
+export default function useData(type, options = { page: 1, name: '' }) {
   const [data, setData] = useState({ results: [] });
 
   useEffect(() => {
-    const defaultRequest = async () => {
+    const fetchData = async () => {
+      const requestLink =
+        options.page != -1
+          ? `https://rickandmortyapi.com/api/${type}/?page=${options.page}`
+          : `https://rickandmortyapi.com/api/${type}/?name=${options.name}`;
+
       try {
-        const response = await fetch(`https://rickandmortyapi.com/api/${type}/1,2,3,4,5`);
+        const response = await fetch(requestLink);
         const json = await response.json();
-        setData({ results: json });
+        setData(json);
       } catch (err) {
         console.error(err);
       }
     };
 
-    const namedRequest = async () => {
-      try {
-        const response = await fetch(`https://rickandmortyapi.com/api/${type}/?name=${options.name}`);
-
-        const json = await response.json();
-        setData(json);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    if (options.default) defaultRequest();
-    else namedRequest();
-  }, [type, options.default, options.name]);
+    fetchData();
+  }, [type, options.page, options.name]);
 
   return data.results;
 }
