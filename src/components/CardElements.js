@@ -3,7 +3,8 @@ import Breakpoints from '../Brakpoints';
 
 export const Deck = styled.div`
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 40% 40%;
+  justify-content: center;
   gap: 1.5rem;
   min-height: 83vh;
   padding: 1rem 3rem 1rem 2rem;
