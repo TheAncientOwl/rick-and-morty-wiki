@@ -50,7 +50,7 @@ export const CardDetails = styled.div`
   padding: 0.7rem 0;
 
   @media (max-width: ${Breakpoints.phone}) {
-    font-size: 0.6rem;
+    font-size: 0.6em;
   }
 `;
 
