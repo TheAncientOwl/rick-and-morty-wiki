@@ -15,7 +15,7 @@ export default function Navbar() {
 
   return (
     <>
-      <NavMenuToggleButton active={menuOpen} onClick={() => setMenuOpen(!menuOpen)} />
+      <NavMenuToggleButton active={menuOpen ? 1 : 0} onClick={() => setMenuOpen(!menuOpen)} />
       <NavContainer>
         <LogoContainer>
           <LogoImg src={LogoSrc} alt='logo' />
