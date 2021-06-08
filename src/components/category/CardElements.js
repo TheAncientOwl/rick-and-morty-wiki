@@ -3,9 +3,9 @@ import Breakpoints from '../../Brakpoints';
 
 export const Deck = styled.div`
   display: grid;
-  grid-template-columns: 40% 40%;
+  grid-template-columns: 45% 45%;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1.6rem;
   min-height: 83vh;
   padding: 1rem 3rem 1rem 2rem;
 
@@ -17,22 +17,25 @@ export const Deck = styled.div`
 
 export const Card = styled.div`
   background: ${({ theme }) => theme.card.background};
-  border: 0.2rem solid ${({ theme }) => theme.navbar.titleColor};
-  box-shadow: 0.3rem 0.3rem ${({ theme }) => theme.navbar.titleShadowColor};
-  border-radius: 1rem;
+  border: 0.2em solid ${({ theme }) => theme.navbar.titleColor};
+  box-shadow: 0.3em 0.3em ${({ theme }) => theme.navbar.titleShadowColor};
+  border-radius: 1em;
   overflow: hidden;
   display: flex;
+  min-height: 14em;
 
   @media (max-width: ${Breakpoints.tablet}) {
     box-shadow: none;
+    font-size: 1.25em;
+  }
+
+  @media (max-width: ${Breakpoints.phone}) {
+    font-size: 0.8em;
   }
 `;
 
 export const CardImageWrapper = styled.div`
-  width: 40%;
-
-  @media (max-width: ${Breakpoints.phone}) {
-  }
+  width: 35%;
 `;
 
 export const CardImage = styled.img`
@@ -41,25 +44,21 @@ export const CardImage = styled.img`
 `;
 
 export const VerticalDivider = styled.div`
-  border: 1px solid ${({ theme }) => theme.navbar.titleColor};
+  border: 0.1em solid ${({ theme }) => theme.navbar.titleColor};
   height: 100%;
 `;
 
 export const CardDetails = styled.div`
-  width: 50%;
+  width: 65%;
   margin: 0 auto;
-  padding: 0.7rem 0;
-
-  @media (max-width: ${Breakpoints.phone}) {
-    font-size: 0.6em;
-  }
+  padding: 0.8em;
 `;
 
 export const CardName = styled.div(
   ({ theme }) => css`
     color: ${theme.navbar.titleColor};
-    font-size: 2.3em;
     font-style: italic;
+    font-size: 2em;
     letter-spacing: 0.12em;
     font-family: 'Creepster', cursive;
     text-shadow: 0.07em 0.07em ${theme.navbar.titleShadowColor};
@@ -76,10 +75,10 @@ const Lobster = styled.span`
 
 export const Title = styled(Lobster)`
   color: ${({ theme }) => theme.text.primary};
-  font-size: 1.4em;
+  font-size: 1.25em;
 `;
 
 export const Subtitle = styled(Lobster)`
   color: ${({ theme }) => theme.text.secondary};
-  font-size: 1.2em;
+  font-size: 1.1em;
 `;
