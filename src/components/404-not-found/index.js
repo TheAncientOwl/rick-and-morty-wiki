@@ -8,9 +8,9 @@ import {
   Subtitle,
   Title,
   VerticalDivider,
-} from '../CardElements';
-import CategoryType from '../../../CategoryType';
-import fetchData from '../fetchData';
+} from '../category/CardElements';
+import CategoryType from '../../CategoryType';
+import fetchData from '../category/fetchData';
 import { NotFoundCard } from './NotFoundElements';
 
 export default function NotFound() {
