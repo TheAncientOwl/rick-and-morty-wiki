@@ -51,7 +51,7 @@ export default function Category({ type }) {
 
       <TopAnchor />
 
-      <Deck>{cardsOrNotFound(data)}</Deck>
+      <Deck>{cardsOrNotFound(data, type)}</Deck>
 
       <SimpleContainer style={{ justifyContent: 'center' }}>{pagination}</SimpleContainer>
     </>
