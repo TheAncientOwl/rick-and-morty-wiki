@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Deck } from './CardElements';
 import useData from './useData';
 import Filter from '../filter';
-import characterCardsOrNotFound from './characterCardsOrNotFound';
+import cardsOrNotFound from './cardsOrNotFound';
 import Pagination from '../pagination';
 import { SimpleContainer } from '../filter/FilterElements';
 import { moveToTopAnchor, TopAnchor } from '../TopAnchor';
@@ -51,7 +51,7 @@ export default function Category({ type }) {
 
       <TopAnchor />
 
-      <Deck>{characterCardsOrNotFound(data)}</Deck>
+      <Deck>{cardsOrNotFound(data)}</Deck>
 
       <SimpleContainer style={{ justifyContent: 'center' }}>{pagination}</SimpleContainer>
     </>

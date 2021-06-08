@@ -11,7 +11,7 @@ import {
 } from './CardElements';
 import NotFound from './not-found';
 
-export default function characterCardsOrNotFound(data) {
+export default function cardsOrNotFound(data) {
   if (data.length == 0) return <NotFound />;
   return (
     <>
