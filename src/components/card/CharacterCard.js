@@ -1,16 +1,15 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Card,
+  CardDetails,
   CardImage,
   CardImageWrapper,
-  VerticalDivider,
-  CardDetails,
   CardName,
+  VerticalDivider,
   Section,
-  Subtitle,
   Title,
+  Subtitle,
 } from './CardElements';
-import PropTypes from 'prop-types';
 
 export default function CharacterCard({ image, name, status, species, lastKnownLocation }) {
   const details = (
@@ -41,9 +40,7 @@ export default function CharacterCard({ image, name, status, species, lastKnownL
       <CardImageWrapper>
         <CardImage src={image} alt={name} />
       </CardImageWrapper>
-
       <VerticalDivider />
-
       <CardDetails>
         <CardName>{name}</CardName>
         {details}

@@ -3,39 +3,39 @@ import Breakpoints from '../../Brakpoints';
 
 export const Deck = styled.div`
   display: grid;
-  grid-template-columns: 45% 45%;
+  grid-template-columns: 35% 35%;
   justify-content: center;
-  gap: 1.6rem;
+  gap: 2rem;
   min-height: 83vh;
-  padding: 1rem 3rem 1rem 2rem;
+  padding: 2rem 0;
 
   @media (max-width: ${Breakpoints.tablet}) {
-    grid-template-columns: 100%;
-    padding: 1rem 0.5rem;
+    grid-template-columns: 75%;
+  }
+
+  @media (max-width: ${Breakpoints.phone}) {
+    grid-template-columns: 85%;
+    font-size: 0.7rem;
   }
 `;
 
 export const Card = styled.div`
-  background: ${({ theme }) => theme.card.background};
-  border: 0.2em solid ${({ theme }) => theme.navbar.titleColor};
-  box-shadow: 0.3em 0.3em ${({ theme }) => theme.navbar.titleShadowColor};
-  border-radius: 1em;
-  overflow: hidden;
+  min-height: 12.5em;
   display: flex;
-  min-height: 14em;
+  overflow: hidden;
+
+  background: ${({ theme }) => theme.card.background};
+  border: 0.19em solid ${({ theme }) => theme.navbar.titleColor};
+  box-shadow: 0.19em 0.14em ${({ theme }) => theme.navbar.titleShadowColor};
+  border-radius: 1em;
 
   @media (max-width: ${Breakpoints.tablet}) {
-    box-shadow: none;
-    font-size: 1.25em;
-  }
-
-  @media (max-width: ${Breakpoints.phone}) {
-    font-size: 0.8em;
+    min-height: 14em;
   }
 `;
 
 export const CardImageWrapper = styled.div`
-  width: 35%;
+  width: 12.5em;
 `;
 
 export const CardImage = styled.img`
@@ -44,14 +44,11 @@ export const CardImage = styled.img`
 `;
 
 export const VerticalDivider = styled.div`
-  border: 0.1em solid ${({ theme }) => theme.navbar.titleColor};
-  height: 100%;
+  border: 1px solid ${({ theme }) => theme.navbar.titleColor};
 `;
 
 export const CardDetails = styled.div`
-  width: 65%;
-  margin: 0 auto;
-  padding: 0.8em;
+  padding: 0.5em 0.5em 0.5em 0.9em;
 `;
 
 export const CardName = styled.div(
