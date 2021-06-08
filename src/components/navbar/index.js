@@ -10,8 +10,10 @@ import {
 } from './NavbarElements';
 import LogoSrc from '../../images/logo.jpg';
 import { moveToTopAnchor } from '../TopAnchor';
+import PropTypes from 'prop-types';
+import CategoryType from '../category/CategoryType';
 
-export default function Navbar() {
+export default function Navbar({ onCategoryChange }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -23,10 +25,12 @@ export default function Navbar() {
         </LogoContainer>
         <NavTitle onClick={moveToTopAnchor}>Rick and Morty Wiki</NavTitle>
         <CategoryLinksContainer active={menuOpen}>
-          {['Characters', 'Locations'].map((item, index) => (
+          {[CategoryType.character, CategoryType.location].map((item, index) => (
             <CategoryLink
               key={index}
               onClick={() => {
+                onCategoryChange(item);
+                moveToTopAnchor();
                 setMenuOpen(false);
               }}>
               {item}
@@ -37,3 +41,7 @@ export default function Navbar() {
     </>
   );
 }
+
+Navbar.propTypes = {
+  onCategoryChange: PropTypes.func.isRequired,
+};
