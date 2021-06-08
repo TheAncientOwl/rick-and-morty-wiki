@@ -49,6 +49,8 @@ export default function App() {
             setPage(Math.min(numberOfPages, page + 1));
             moveToTopAnchor();
           }}
+          jumpToFirst={() => setPage(1)}
+          jumpToLast={() => setPage(numberOfPages)}
         />
       )}
     </>

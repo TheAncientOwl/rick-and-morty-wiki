@@ -16,6 +16,7 @@ export const Deck = styled.div`
   @media (max-width: ${Breakpoints.phone}) {
     grid-template-columns: 85%;
     font-size: 0.7rem;
+    padding: 1rem 0;
   }
 `;
 

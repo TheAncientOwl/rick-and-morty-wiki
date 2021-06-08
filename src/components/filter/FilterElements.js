@@ -3,11 +3,14 @@ import Breakpoints from '../../Brakpoints';
 
 export const SimpleContainer = styled.div(
   ({ theme }) => css`
-    display: flex;
     align-items: center;
 
     background: ${theme.navbar.background};
     padding: 0.1rem 0 0.4rem 0;
+
+    @media (min-width: ${Breakpoints.tablet}) {
+      display: flex;
+    }
 
     @media (max-width: ${Breakpoints.tablet}) {
       font-size: 1.2rem;
@@ -15,6 +18,7 @@ export const SimpleContainer = styled.div(
 
     @media (max-width: ${Breakpoints.phone}) {
       justify-content: center;
+      text-align: center;
       font-size: 0.8rem;
     }
   `
@@ -29,9 +33,13 @@ export const FilterText = styled.span(
   `
 );
 
-export const FilterForm = styled.form``;
+export const FilterForm = styled.form`
+  display: inline;
+`;
 
-export const FilterLabel = styled.label``;
+export const FilterLabel = styled.label`
+  display: inline;
+`;
 
 export const FilterInput = styled.input(
   ({ theme }) => css`
@@ -45,6 +53,7 @@ export const FilterInput = styled.input(
     border-radius: 0.4em;
     width: 8em;
     text-transform: capitalize;
+    display: inline;
 
     &:focus {
       outline: none !important;
@@ -65,6 +74,7 @@ export const Button = styled.div(
     margin: 0.2em 0 0 0.4em;
     font-size: 1.5em;
     text-align: center;
+    display: inline;
 
     cursor: pointer;
 
