@@ -1,10 +1,15 @@
+const Scroll = require('react-scroll');
+
 export function TopAnchor() {
-  return <div id='back-to-top-anchor' />;
+  return <div name='back-to-top-anchor' />;
 }
 
 export function moveToTopAnchor() {
-  const anchor = document.querySelector('#back-to-top-anchor');
-  if (anchor) {
-    anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
+  Scroll.animateScroll.scrollToTop({
+    duration: 1500,
+    delay: 100,
+    smooth: true,
+    containerId: 'back-to-top-anchor',
+    offset: 20,
+  });
 }

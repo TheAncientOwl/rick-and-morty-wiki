@@ -28,6 +28,11 @@ export const LogoImg = styled.img`
   max-width: 100%;
   max-height: 100%;
   cursor: pointer;
+
+  &:hover {
+    border: 0.17rem solid ${({ theme }) => theme.navbar.titleShadowColor};
+    border-radius: 50%;
+  }
 `;
 
 export const NavTitle = styled.div(
@@ -41,6 +46,12 @@ export const NavTitle = styled.div(
     cursor: pointer;
     max-width: 55vw;
     text-align: center;
+
+    &:hover {
+      color: ${theme.navbar.titleShadowColor};
+      text-shadow: 0.12rem 0.12rem ${theme.navbar.titleColor};
+      text-decoration: underline;
+    }
 
     @media (max-width: ${Breakpoints.phone}) {
       font-size: 1.4rem;
@@ -128,6 +139,7 @@ export const CategoryLink = styled.div(
     &:hover {
       color: ${theme.navbar.titleShadowColor};
       text-shadow: 0.12rem 0.12rem ${theme.navbar.titleColor};
+      text-decoration: underline;
     }
   `
 );
