@@ -3,7 +3,7 @@ import { Deck } from './CardElements';
 import useData from './useData';
 import Filter from './filter';
 import cardsOrNotFound from './cardsOrNotFound';
-import Pagination from '../pagination';
+import Pagination from './pagination';
 import { SimpleContainer } from './filter/FilterElements';
 import { moveToTopAnchor, TopAnchor } from '../TopAnchor';
 import PropTypes from 'prop-types';
