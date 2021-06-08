@@ -9,7 +9,7 @@ import {
   Subtitle,
   Title,
 } from './CardElements';
-import NotFound from '../not-found';
+import NotFound from './not-found';
 
 export default function characterCardsOrNotFound(data) {
   if (!data) return <NotFound />;

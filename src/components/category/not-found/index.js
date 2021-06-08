@@ -8,8 +8,8 @@ import {
   Subtitle,
   Title,
   VerticalDivider,
-} from '../category/CardElements';
-import useData from '../category/useData';
+} from '../CardElements';
+import useData from '../useData';
 import { NotFoundCard } from './NotFoundElements';
 
 export default function NotFound() {

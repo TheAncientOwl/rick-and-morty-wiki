@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Card } from '../category/CardElements';
-import Breakpoints from '../../Brakpoints';
+import { Card } from '../CardElements';
+import Breakpoints from '../../../Brakpoints';
 
 export const NotFoundCard = styled(Card)`
   width: 50vw;
