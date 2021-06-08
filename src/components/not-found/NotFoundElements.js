@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Card } from '../CardElements';
+import { Card } from '../category/CardElements';
 import Breakpoints from '../../Brakpoints';
 
 export const NotFoundCard = styled(Card)`

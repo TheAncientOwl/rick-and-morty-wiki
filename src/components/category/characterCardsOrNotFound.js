@@ -8,7 +8,7 @@ import {
   Section,
   Subtitle,
   Title,
-} from '../CardElements';
+} from './CardElements';
 import NotFound from '../not-found';
 
 export default function characterCardsOrNotFound(data) {

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import Breakpoints from '../Brakpoints';
+import Breakpoints from '../../Brakpoints';
 
 export const Deck = styled.div`
   display: grid;

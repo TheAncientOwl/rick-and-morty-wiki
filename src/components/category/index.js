@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Deck } from '../CardElements';
+import { Deck } from './CardElements';
 import useData from './useData';
 import Filter from '../filter';
 import characterCardsOrNotFound from './characterCardsOrNotFound';
