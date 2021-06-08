@@ -8,7 +8,7 @@ import { SimpleContainer } from '../filter/FilterElements';
 import { moveToTopAnchor, TopAnchor } from '../TopAnchor';
 import PropTypes from 'prop-types';
 
-export default function CharactersDeck({ type }) {
+export default function Category({ type }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [characterName, setCharacterName] = useState('');
   const [data, numberOfPages] = useData(type, { page: currentPage, name: characterName });
@@ -58,6 +58,6 @@ export default function CharactersDeck({ type }) {
   );
 }
 
-CharactersDeck.propTypes = {
+Category.propTypes = {
   type: PropTypes.string.isRequired,
 };
