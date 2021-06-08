@@ -7,7 +7,7 @@ import Pagination from './components/pagination';
 import { moveToTopAnchor, TopAnchor } from './components/TopAnchor';
 import { SimpleContainer } from './components/filter/FilterElements';
 import Filter from './components/filter';
-import { Deck } from './components/category/CardElements';
+import { Deck } from './components/card/CardElements';
 import cardsOrNotFound from './components/404-not-found/cardsOrNotFound';
 
 const INVALID_PAGE = -1;

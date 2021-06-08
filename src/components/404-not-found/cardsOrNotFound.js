@@ -1,6 +1,6 @@
 import CategoryType from '../../CategoryType';
-import CharacterCard from '../category/CharacterCard';
-import LocationCard from '../category/LocationCard';
+import CharacterCard from '../card/CharacterCard';
+import LocationCard from '../card/LocationCard';
 import NotFound from '.';
 
 export default function cardsOrNotFound(data, type) {
