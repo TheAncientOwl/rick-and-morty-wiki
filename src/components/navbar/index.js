@@ -23,7 +23,7 @@ export default function Navbar({ onCategoryChange }) {
         <LogoContainer>
           <LogoImg src={LogoSrc} alt='logo' onClick={moveToTopAnchor} />
         </LogoContainer>
-        <NavTitle onClick={moveToTopAnchor}>Rick and Morty Wiki</NavTitle>
+        <NavTitle>Rick and Morty Wiki</NavTitle>
         <CategoryLinksContainer active={menuOpen}>
           {[CategoryType.character, CategoryType.location].map((item, index) => (
             <CategoryLink

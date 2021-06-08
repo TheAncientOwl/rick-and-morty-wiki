@@ -30,7 +30,7 @@ export const LogoImg = styled.img`
   cursor: pointer;
 
   &:hover {
-    border: 0.17rem solid ${({ theme }) => theme.navbar.titleShadowColor};
+    border: 0.17rem solid rgb(207, 17, 43);
     border-radius: 50%;
   }
 `;
@@ -43,15 +43,8 @@ export const NavTitle = styled.div(
     letter-spacing: 0.15rem;
     font-family: 'Creepster', cursive;
     text-shadow: 0.12rem 0.12rem ${theme.navbar.titleShadowColor};
-    cursor: pointer;
     max-width: 55vw;
     text-align: center;
-
-    &:hover {
-      color: ${theme.navbar.titleShadowColor};
-      text-shadow: 0.12rem 0.12rem ${theme.navbar.titleColor};
-      text-decoration: underline;
-    }
 
     @media (max-width: ${Breakpoints.phone}) {
       font-size: 1.4rem;
