@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Deck } from './CardElements';
 import fetchData from './fetchData';
-import Filter from './filter';
+import Filter from '../filter';
 import cardsOrNotFound from './cardsOrNotFound';
-import Pagination from './pagination';
-import { SimpleContainer } from './filter/FilterElements';
+import Pagination from '../pagination';
+import { SimpleContainer } from '../filter/FilterElements';
 import { moveToTopAnchor, TopAnchor } from '../TopAnchor';
 import PropTypes from 'prop-types';
 

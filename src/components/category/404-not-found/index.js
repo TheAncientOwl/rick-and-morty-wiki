@@ -9,7 +9,7 @@ import {
   Title,
   VerticalDivider,
 } from '../CardElements';
-import CategoryType from '../CategoryType';
+import CategoryType from '../../../CategoryType';
 import fetchData from '../fetchData';
 import { NotFoundCard } from './NotFoundElements';
 
