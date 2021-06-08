@@ -44,6 +44,7 @@ export const FilterInput = styled.input(
     border: 0.14em solid ${theme.navbar.titleColor};
     border-radius: 0.4em;
     width: 8em;
+    text-transform: capitalize;
 
     &:focus {
       outline: none !important;
