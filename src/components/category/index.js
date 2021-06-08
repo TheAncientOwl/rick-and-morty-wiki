@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Deck } from './CardElements';
-import useData from './useData';
+import fetchData from './fetchData';
 import Filter from './filter';
 import cardsOrNotFound from './cardsOrNotFound';
 import Pagination from './pagination';
@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 export default function Category({ type }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [characterName, setCharacterName] = useState('');
-  const [data, numberOfPages] = useData(type, { page: currentPage, name: characterName });
+  const [data, numberOfPages] = fetchData(type, { page: currentPage, name: characterName });
 
   const handleFilterChange = value => {
     setCurrentPage(-1);

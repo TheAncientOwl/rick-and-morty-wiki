@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function useData(type, options = { page: 1, name: '' }) {
+export default function fetchData(type, options = { page: 1, name: '' }) {
   const [data, setData] = useState({ info: { pages: 0 }, results: [] });
 
   useEffect(() => {
@@ -19,7 +19,6 @@ export default function useData(type, options = { page: 1, name: '' }) {
         console.error(err);
       }
     };
-
     fetchData();
   }, [type, options.page, options.name]);
 

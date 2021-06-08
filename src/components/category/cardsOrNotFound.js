@@ -1,5 +1,6 @@
 import CategoryType from './CategoryType';
 import CharacterCard from './CharacterCard';
+import LocationCard from './LocationCard';
 import NotFound from './404-not-found';
 
 export default function cardsOrNotFound(data, type) {
@@ -23,7 +24,13 @@ export default function cardsOrNotFound(data, type) {
       );
     }
     case CategoryType.location: {
-      break;
+      return (
+        <>
+          {data.map((item, index) => (
+            <LocationCard key={index} name={item.name} />
+          ))}
+        </>
+      );
     }
     default: {
       console.error('Unknown category type');
