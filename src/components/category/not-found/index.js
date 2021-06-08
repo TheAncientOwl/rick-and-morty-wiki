@@ -9,11 +9,12 @@ import {
   Title,
   VerticalDivider,
 } from '../CardElements';
+import CategoryType from '../CategoryType';
 import useData from '../useData';
 import { NotFoundCard } from './NotFoundElements';
 
 export default function NotFound() {
-  const rickData = useData('character', { page: -1, name: 'Rick' });
+  const rickData = useData(CategoryType.character, { page: -1, name: 'Rick' });
   return (
     <NotFoundCard>
       <CardImageWrapper>

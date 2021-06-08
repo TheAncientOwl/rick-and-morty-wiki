@@ -6,11 +6,12 @@ import characterCardsOrNotFound from './characterCardsOrNotFound';
 import Pagination from '../pagination';
 import { SimpleContainer } from '../filter/FilterElements';
 import { moveToTopAnchor, TopAnchor } from '../TopAnchor';
+import PropTypes from 'prop-types';
 
-export default function CharactersDeck() {
+export default function CharactersDeck({ type }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [characterName, setCharacterName] = useState('');
-  const [data, numberOfPages] = useData('character', { page: currentPage, name: characterName });
+  const [data, numberOfPages] = useData(type, { page: currentPage, name: characterName });
 
   const handleFilterChange = value => {
     setCurrentPage(-1);
@@ -23,24 +24,28 @@ export default function CharactersDeck() {
   };
 
   const pagination = (
-    <Pagination
-      currentPage={currentPage}
-      pages={numberOfPages}
-      onPrevClick={() => {
-        setCurrentPage(Math.max(1, currentPage - 1));
-        moveToTopAnchor();
-      }}
-      onNextClick={() => {
-        setCurrentPage(Math.min(numberOfPages, currentPage + 1));
-        moveToTopAnchor();
-      }}
-    />
+    <>
+      {currentPage != -1 && (
+        <Pagination
+          currentPage={currentPage}
+          pages={numberOfPages}
+          onPrevClick={() => {
+            setCurrentPage(Math.max(1, currentPage - 1));
+            moveToTopAnchor();
+          }}
+          onNextClick={() => {
+            setCurrentPage(Math.min(numberOfPages, currentPage + 1));
+            moveToTopAnchor();
+          }}
+        />
+      )}
+    </>
   );
 
   return (
     <>
       <SimpleContainer>
-        <Filter onValueChange={handleFilterChange} onReset={handleFilterReset} defaultText='Character' />
+        <Filter onValueChange={handleFilterChange} onReset={handleFilterReset} defaultText={type} />
         {pagination}
       </SimpleContainer>
 
@@ -52,3 +57,7 @@ export default function CharactersDeck() {
     </>
   );
 }
+
+CharactersDeck.propTypes = {
+  type: PropTypes.string.isRequired,
+};
