@@ -1,6 +1,6 @@
 import CategoryType from './CategoryType';
 import CharacterCard from './CharacterCard';
-import NotFound from './not-found';
+import NotFound from './404-not-found';
 
 export default function cardsOrNotFound(data, type) {
   if (data.length == 0) return <NotFound />;
