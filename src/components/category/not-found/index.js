@@ -13,12 +13,11 @@ import useData from '../useData';
 import { NotFoundCard } from './NotFoundElements';
 
 export default function NotFound() {
-  const rickData = useData('character', { default: false, name: 'Rick' });
-
+  const rickData = useData('character', { page: -1, name: 'Rick' });
   return (
     <NotFoundCard>
       <CardImageWrapper>
-        <CardImage src={rickData[0] ? rickData[0].image : ''} alt='Rick Sanchez' />
+        <CardImage src={rickData[0][0] ? rickData[0][0].image : ''} alt='Rick Sanchez' />
       </CardImageWrapper>
 
       <VerticalDivider />

@@ -13,7 +13,8 @@ export default function useData(type, options = { page: 1, name: '' }) {
       try {
         const response = await fetch(requestLink);
         const json = await response.json();
-        setData(json);
+        if (json.error) setData({ info: { pages: 0 }, results: [] });
+        else setData(json);
       } catch (err) {
         console.error(err);
       }

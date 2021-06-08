@@ -12,7 +12,7 @@ import {
 import NotFound from './not-found';
 
 export default function characterCardsOrNotFound(data) {
-  if (!data) return <NotFound />;
+  if (data.length == 0) return <NotFound />;
   return (
     <>
       {data.map((item, index) => (
