@@ -1,31 +1,20 @@
 import React from 'react';
-import {
-  CardDetails,
-  CardImage,
-  CardImageWrapper,
-  CardName,
-  Section,
-  Subtitle,
-  Title,
-  VerticalDivider,
-} from '../card/CardElements';
 import CategoryType from '../../CategoryType';
+import { CardImage, CardName, VerticalDivider, Section, Title, Subtitle } from '../card/CardElements';
 import useInfo from '../useInfo';
-import { NotFoundCard } from './NotFoundElements';
+import { NotFoundCard, NotFoundDetails, NotFoundImageWrapper } from './NotFoundElements';
 
 export default function NotFound() {
   const rickData = useInfo(CategoryType.character, { page: -1, name: 'Rick' });
+
   return (
     <NotFoundCard>
-      <CardImageWrapper>
+      <NotFoundImageWrapper>
         <CardImage src={rickData[0][0] ? rickData[0][0].image : ''} alt='Rick Sanchez' />
-      </CardImageWrapper>
-
+      </NotFoundImageWrapper>
       <VerticalDivider />
-
-      <CardDetails>
+      <NotFoundDetails>
         <CardName style={{ textAlign: 'center' }}>~ 404 ~</CardName>
-
         {[
           { character: 'Morty', text: ' Aw geez, Rick, something bad happened!' },
           {
@@ -39,7 +28,7 @@ export default function NotFound() {
             <Subtitle>{item.text}</Subtitle>
           </Section>
         ))}
-      </CardDetails>
+      </NotFoundDetails>
     </NotFoundCard>
   );
 }

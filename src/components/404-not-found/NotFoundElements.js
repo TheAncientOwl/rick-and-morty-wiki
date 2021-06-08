@@ -1,21 +1,26 @@
 import styled from 'styled-components';
-import { Card } from '../card/CardElements';
+import { Card, CardDetails } from '../card/CardElements';
 import Breakpoints from '../../Brakpoints';
 
 export const NotFoundCard = styled(Card)`
-  width: 50vw;
-  height: 25vw;
+  width: 45vw;
+  height: 20vw;
 
   @media (max-width: ${Breakpoints.tablet}) {
     width: 80vw;
-    height: 40vw;
+    height: 35vw;
   }
 
   @media (max-width: ${Breakpoints.phone}) {
-    font-size: 0.8rem;
+    width: 87vw;
+    height: 60vw;
   }
 `;
 
-export const NotFoundImageContainer = styled.div`
-  width: 10vw;
+export const NotFoundImageWrapper = styled.div`
+  width: 45%;
+`;
+
+export const NotFoundDetails = styled(CardDetails)`
+  width: 59%;
 `;
