@@ -2,22 +2,28 @@ import { ThemeProvider } from 'styled-components';
 import Navbar from './components/navbar';
 import theme from './theme';
 import CategoryType from './CategoryType';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Pagination from './components/pagination';
 import { moveToTopAnchor, TopAnchor } from './components/TopAnchor';
 import { SimpleContainer } from './components/filter/FilterElements';
 import Filter from './components/filter';
 import { Deck } from './components/card/CardElements';
 import cardsOrNotFound from './components/404-not-found/cardsOrNotFound';
+import useInfo from './components/useInfo';
 
-const INVALID_PAGE = -1;
+export const INVALID_PAGE = -1;
 
 export default function App() {
   const [category, setCategory] = useState(CategoryType.character);
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState('');
-  const [numberOfPages, setNumberOfPages] = useState(0);
-  const [data, setData] = useState([]);
+  const [data, numberOfPages] = useInfo(category, { page: page, name: filter });
+
+  const handleCategoryChange = newCategory => {
+    setCategory(newCategory);
+    setPage(1);
+    setFilter('');
+  };
 
   const handleFilterChange = value => {
     setPage(INVALID_PAGE);
@@ -28,32 +34,6 @@ export default function App() {
     setPage(1);
     setFilter('');
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const requestLink =
-        page != INVALID_PAGE
-          ? `https://rickandmortyapi.com/api/${category}/?page=${page}`
-          : `https://rickandmortyapi.com/api/${category}/?name=${filter}`;
-
-      try {
-        const response = await fetch(requestLink);
-        const json = await response.json();
-        if (json.error) {
-          setNumberOfPages(0);
-          setData([]);
-          return;
-        }
-
-        setNumberOfPages(json.info.pages);
-        setData(json.results);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    fetchData();
-  }, [category, page, filter]);
 
   const pagination = (
     <>
@@ -77,7 +57,7 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Navbar onCategoryChange={setCategory} />
+        <Navbar onCategoryChange={handleCategoryChange} />
         <SimpleContainer>
           <Filter onValueChange={handleFilterChange} onReset={handleFilterReset} defaultText={category} />
           {pagination}

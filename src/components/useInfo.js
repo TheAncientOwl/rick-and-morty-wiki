@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
+import { INVALID_PAGE } from '../App';
 
-export default function fetchData(type, options = { page: 1, name: '' }) {
+export default function useInfo(type, options = { page: 1, name: '' }) {
   const [data, setData] = useState({ info: { pages: 0 }, results: [] });
 
   useEffect(() => {
     const fetchData = async () => {
       const requestLink =
-        options.page != -1
+        options.page != INVALID_PAGE
           ? `https://rickandmortyapi.com/api/${type}/?page=${options.page}`
           : `https://rickandmortyapi.com/api/${type}/?name=${options.name}`;
 
