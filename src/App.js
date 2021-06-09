@@ -12,7 +12,7 @@ import Filter from './components/filter';
 import { Deck } from './components/card/CardElements';
 import NotFound from './components/card/404-not-found';
 import useCharactersData from './hooks/useCharactersData';
-import CharacterCard from './components/card/CharacterCard';
+import CharacterCard from './components/card';
 
 export const INVALID_PAGE = -1;
 
@@ -66,11 +66,14 @@ export default function App() {
         {data.map((item, index) => (
           <CharacterCard
             key={index}
+            id={item.id}
             image={item.image || ''}
             name={item.name || ''}
             status={item.status || ''}
             species={item.species || ''}
+            origin={item.origin ? item.origin.name : ''}
             lastKnownLocation={item.location ? item.location.name : ''}
+            firstEpisodeUrl={item.episode[0]}
           />
         ))}
       </>

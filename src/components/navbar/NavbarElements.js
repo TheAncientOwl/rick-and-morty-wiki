@@ -12,6 +12,7 @@ export const NavContainer = styled.nav`
   background: ${({ theme }) => theme.navbar.background};
   display: flex;
   align-items: center;
+  z-index: 999;
 `;
 
 export const LogoContainer = styled.div`

@@ -1,82 +1,82 @@
 import styled, { css } from 'styled-components';
-import Breakpoints from '../../constants/Brakpoints';
+import { Map } from './MapElements';
+import { FrontCard } from './FrontCardElements';
+import { BackCard } from './BackCardElements';
 
 export const Deck = styled.div`
+  min-height: 75vh;
   display: grid;
-  grid-template-columns: 35% 35%;
+  grid-template-columns: 18% 18% 18% 18%;
   justify-content: center;
   gap: 2rem;
-  min-height: 83vh;
-  padding: 2rem 0;
-
-  @media (max-width: ${Breakpoints.tablet}) {
-    grid-template-columns: 75%;
-  }
-
-  @media (max-width: ${Breakpoints.phone}) {
-    grid-template-columns: 85%;
-    font-size: 0.7rem;
-    padding: 1rem 0;
-  }
+  margin: 2rem 0;
 `;
 
-export const Card = styled.div`
-  min-height: 12.5em;
-  display: flex;
-  overflow: hidden;
-
-  background: ${({ theme }) => theme.card.background};
-  border: 0.19em solid ${({ theme }) => theme.navbar.titleColor};
-  box-shadow: 0.19em 0.14em ${({ theme }) => theme.navbar.titleShadowColor};
-  border-radius: 1em;
-
-  @media (max-width: ${Breakpoints.tablet}) {
-    min-height: 14em;
-  }
+export const CardNumber = styled.div`
+  position: absolute;
+  font-weight: bold;
+  top: 0;
+  right: 0.6em;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 0.5em 0.5em 0.75em;
+  clip-path: polygon(100% 0, 100% 100%, 50% 85%, 0% 100%, 0 0);
+  font-family: 'Lobster', cursive;
+  color: ${({ theme }) => theme.text.secondary};
+  transition: transform 250ms cubic-bezier(0.21, 1, 0.81, 1);
 `;
 
-export const CardImageWrapper = styled.div`
-  width: 12.5em;
-`;
-
-export const CardImage = styled.img`
-  width: 100%;
-  height: 100%;
-`;
-
-export const VerticalDivider = styled.div`
-  border: 1px solid ${({ theme }) => theme.navbar.titleColor};
-`;
-
-export const CardDetails = styled.div`
-  padding: 0.5em 0.5em 0.5em 0.9em;
-`;
-
-export const CardName = styled.div(
+export const Background = styled.div(
   ({ theme }) => css`
-    color: ${theme.navbar.titleColor};
-    font-style: italic;
-    font-size: 2em;
-    letter-spacing: 0.12em;
-    font-family: 'Creepster', cursive;
-    text-shadow: 0.07em 0.07em ${theme.navbar.titleShadowColor};
+    position: absolute;
+    top: 2em;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+
+    transform: scale(0.1, 0.6);
+
+    background: ${theme.navbar.background};
+    border: 0.2em solid ${theme.navbar.titleColor};
+    border-radius: 0.8em;
+    overflow: hidden;
+
+    opacity: 0;
   `
 );
 
-export const Section = styled.div`
-  margin-top: 1em;
-`;
+export const Card = styled.div`
+  margin: 0 auto;
+  position: relative;
+  font-size: 0.85rem;
 
-const Lobster = styled.span`
-  font-family: 'Lobster', cursive;
-`;
+  &:hover {
+    z-index: 2000;
+  }
 
-export const Title = styled(Lobster)`
-  color: ${({ theme }) => theme.text.primary};
-  font-size: 1.25em;
-`;
+  &:hover ${CardNumber} {
+    background: ${({ theme }) => theme.navbar.titleColor};
+    transform: translate(95%, 82%);
+  }
 
-export const Subtitle = styled(Lobster)`
-  color: ${({ theme }) => theme.text.secondary};
-  font-size: 1.1em;
+  &:hover ${FrontCard} {
+    transform: translateY(-35%) scale(0.7);
+    z-index: 10;
+    min-height: 18em;
+
+    ${Map} {
+      display: none;
+    }
+  }
+
+  &:hover ${Background} {
+    transform: scale(1.2, 1);
+    transition: 250ms cubic-bezier(0.21, 1, 0.81, 1), opacity 100ms linear;
+    opacity: 1;
+  }
+
+  &:hover ${BackCard} {
+    transition: 250ms cubic-bezier(0.21, 1, 0.81, 1), opacity 100ms linear;
+    opacity: 1;
+  }
 `;
