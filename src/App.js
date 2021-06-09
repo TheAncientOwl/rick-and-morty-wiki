@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import Navbar from './components/navbar';
-import theme from './theme';
-import CategoryType from './CategoryType';
+import AppTheme from './constants/AppTheme';
+import CategoryType from './constants/CategoryType';
 import { useState } from 'react';
 import Pagination from './components/pagination';
 import { moveToTopAnchor, TopAnchor } from './components/TopAnchor';
@@ -58,7 +58,7 @@ export default function App() {
 
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={AppTheme}>
         <Navbar onCategoryChange={handleCategoryChange} />
         <SimpleContainer>
           <Filter onValueChange={handleFilterChange} onReset={handleFilterReset} defaultText={category} />

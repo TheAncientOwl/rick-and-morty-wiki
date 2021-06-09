@@ -1,4 +1,4 @@
-const theme = {
+const AppTheme = {
   background: '#131313',
   navbar: {
     background: '#191919',
@@ -14,5 +14,5 @@ const theme = {
   },
 };
 
-Object.freeze(theme);
-export default theme;
+Object.freeze(AppTheme);
+export default AppTheme;

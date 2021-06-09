@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import Breakpoints from '../../Brakpoints';
+import Breakpoints from '../../constants/Brakpoints';
 
 export const SimpleContainer = styled.div(
   ({ theme }) => css`

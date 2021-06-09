@@ -1,4 +1,4 @@
-import CategoryType from '../CategoryType';
+import CategoryType from '../constants/CategoryType';
 import CharacterCard from '../components/card/CharacterCard';
 import LocationCard from '../components/card/LocationCard';
 import NotFound from '../components/card/404-not-found';

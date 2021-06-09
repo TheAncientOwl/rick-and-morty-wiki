@@ -11,7 +11,7 @@ import {
 import LogoSrc from '../../images/logo.jpg';
 import { moveToTopAnchor } from '../TopAnchor';
 import PropTypes from 'prop-types';
-import CategoryType from '../../CategoryType';
+import CategoryType from '../../constants/CategoryType';
 
 export default function Navbar({ onCategoryChange }) {
   const [menuOpen, setMenuOpen] = useState(false);

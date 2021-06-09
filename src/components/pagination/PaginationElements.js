@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { GiPreviousButton, GiNextButton } from 'react-icons/gi';
 import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
-import Breakpoints from '../../Brakpoints';
+import Breakpoints from '../../constants/Brakpoints';
 
 export const PaginationContainer = styled.div`
   margin-left: 1.2em;
