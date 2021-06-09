@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import Breakpoints from '../../constants/Brakpoints';
-import { FaBars } from 'react-icons/fa';
 
 const NAV_HEIGHT = '5rem';
 
@@ -48,91 +47,6 @@ export const NavTitle = styled.div(
 
     @media (max-width: ${Breakpoints.phone}) {
       font-size: 1.4rem;
-    }
-  `
-);
-
-export const NavMenuToggleButton = styled(FaBars)(
-  ({ theme, active }) => css`
-    color: ${theme.navbar.titleColor};
-    ${active &&
-    css`
-      color: ${theme.navbar.titleShadowColor};
-    `};
-    position: fixed;
-    z-index: 100;
-    top: -1000px;
-
-    cursor: pointer;
-    &:hover {
-      color: ${theme.navbar.titleShadowColor};
-    }
-
-    @media (max-width: ${Breakpoints.tablet}) {
-      top: 1rem;
-      right: 1rem;
-      font-size: 2rem;
-    }
-
-    @media (max-width: ${Breakpoints.phone}) {
-      top: 0.8rem;
-      right: 0.7rem;
-      font-size: 1.4rem;
-    }
-  `
-);
-
-export const CategoryLinksContainer = styled.div(
-  ({ theme, active }) => css`
-    margin-left: 2rem;
-    display: flex;
-    transition: all 0.5s ease;
-
-    @media (max-width: ${Breakpoints.tablet}) {
-      position: absolute;
-      top: -1000px;
-
-      ${active &&
-      css`
-        top: 0;
-        transition: all 0.5s ease;
-      `}
-
-      margin: 0;
-      display: grid;
-      grid-template-columns: auto;
-      text-align: center;
-      height: 25vh;
-      width: 100%;
-      background: ${theme.navbar.background};
-      border-bottom: 3px solid ${theme.navbar.titleShadowColor};
-      border-radius: 0.8rem;
-      padding-top: 2rem;
-
-      z-index: 200;
-    }
-  `
-);
-
-export const CategoryLink = styled.div(
-  ({ theme }) => css`
-    margin-right: 1rem;
-    color: ${theme.navbar.titleColor};
-    text-shadow: 0.12rem 0.12rem ${theme.navbar.titleShadowColor};
-
-    font-size: 1.5rem;
-    font-style: italic;
-    letter-spacing: 0.15rem;
-    font-family: 'Creepster', cursive;
-
-    cursor: pointer;
-
-    display: block;
-
-    &:hover {
-      color: ${theme.navbar.titleShadowColor};
-      text-shadow: 0.12rem 0.12rem ${theme.navbar.titleColor};
-      text-decoration: underline;
     }
   `
 );

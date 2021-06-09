@@ -8,8 +8,9 @@ import { moveToTopAnchor, TopAnchor } from './components/TopAnchor';
 import { SimpleContainer } from './components/filter/FilterElements';
 import Filter from './components/filter';
 import { Deck } from './components/card/CardElements';
-import cardsOrNotFound from './helpers/cardsOrNotFound';
-import useInfo from './helpers/useInfo';
+import useInfo from './hooks/useInfo';
+import NotFound from './components/card/404-not-found';
+import CharacterCard from './components/card/CharacterCard';
 
 export const INVALID_PAGE = -1;
 
@@ -62,6 +63,24 @@ export default function App() {
     </>
   );
 
+  const cards =
+    data.length == 0 ? (
+      <NotFound />
+    ) : (
+      <>
+        {data.map((item, index) => (
+          <CharacterCard
+            key={index}
+            image={item.image || ''}
+            name={item.name || ''}
+            status={item.status || ''}
+            species={item.species || ''}
+            lastKnownLocation={item.location ? item.location.name : ''}
+          />
+        ))}
+      </>
+    );
+
   return (
     <>
       <ThemeProvider theme={AppTheme}>
@@ -71,7 +90,7 @@ export default function App() {
           {pagination}
         </SimpleContainer>
         <TopAnchor />
-        <Deck>{cardsOrNotFound(data, category)}</Deck>
+        <Deck>{cards}</Deck>
 
         <SimpleContainer style={{ justifyContent: 'center' }}>{pagination}</SimpleContainer>
       </ThemeProvider>

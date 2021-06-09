@@ -1,7 +1,7 @@
 import React from 'react';
 import CategoryType from '../../../constants/CategoryType';
 import { CardImage, CardName, VerticalDivider, Section, Title, Subtitle } from '../CardElements';
-import useInfo from '../../../helpers/useInfo';
+import useInfo from '../../../hooks/useInfo';
 import { NotFoundCard, NotFoundDetails, NotFoundImageWrapper } from './NotFoundElements';
 
 export default function NotFound() {
