@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Breakpoints from '../../constants/Brakpoints';
 
 export const BackCard = styled.div`
   position: absolute;
@@ -15,4 +16,8 @@ export const BackCard = styled.div`
 
   min-height: 12em;
   width: 20em;
+
+  @media (max-width: ${Breakpoints.tablet}) {
+    width: 18em;
+  }
 `;

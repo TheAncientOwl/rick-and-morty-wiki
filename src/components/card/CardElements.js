@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { Map } from './MapElements';
 import { FrontCard } from './FrontCardElements';
 import { BackCard } from './BackCardElements';
+import Breakpoints from '../../constants/Brakpoints';
 
 export const Deck = styled.div`
   min-height: 75vh;
@@ -10,6 +11,10 @@ export const Deck = styled.div`
   justify-content: center;
   gap: 2rem;
   margin: 2rem 0;
+
+  @media (max-width: ${Breakpoints.tablet}) {
+    grid-template-columns: 27% 27% 27%;
+  }
 `;
 
 export const CardNumber = styled.div`
@@ -56,7 +61,7 @@ export const Card = styled.div`
 
   &:hover ${CardNumber} {
     background: ${({ theme }) => theme.navbar.titleColor};
-    transform: translate(95%, 82%);
+    transform: translate(50%, 82%);
   }
 
   &:hover ${FrontCard} {
