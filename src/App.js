@@ -85,6 +85,7 @@ export default function App() {
           {pagination}
         </SimpleContainer>
         <TopAnchor />
+
         <Deck>{cards}</Deck>
 
         <SimpleContainer style={{ justifyContent: 'center' }}>{pagination}</SimpleContainer>
