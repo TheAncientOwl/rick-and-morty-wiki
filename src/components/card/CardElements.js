@@ -15,6 +15,10 @@ export const Deck = styled.div`
   @media (max-width: ${Breakpoints.tablet}) {
     grid-template-columns: 27% 27% 27%;
   }
+
+  @media (max-width: ${Breakpoints.phone}) {
+    grid-template-columns: 60%;
+  }
 `;
 
 export const CardNumber = styled.div`
@@ -62,6 +66,10 @@ export const Card = styled.div`
   &:hover ${CardNumber} {
     background: ${({ theme }) => theme.navbar.titleColor};
     transform: translate(50%, 82%);
+
+    @media (max-width: ${Breakpoints.phone}) {
+      transform: translate(50%, 10%);
+    }
   }
 
   &:hover ${FrontCard} {
@@ -78,6 +86,10 @@ export const Card = styled.div`
     transform: scale(1.2, 1);
     transition: 250ms cubic-bezier(0.21, 1, 0.81, 1), opacity 100ms linear;
     opacity: 1;
+
+    @media (max-width: ${Breakpoints.phone}) {
+      transform: translateY(20%) scale(1.2, 1.6);
+    }
   }
 
   &:hover ${BackCard} {

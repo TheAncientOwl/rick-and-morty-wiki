@@ -3,7 +3,7 @@ import Breakpoints from '../../constants/Brakpoints';
 
 export const BackCard = styled.div`
   position: absolute;
-  top: 10.4rem;
+  top: 10.4em;
   left: 50%;
   transform: translateX(-50%);
 
@@ -19,5 +19,14 @@ export const BackCard = styled.div`
 
   @media (max-width: ${Breakpoints.tablet}) {
     width: 18em;
+  }
+
+  @media (max-width: ${Breakpoints.phone}) {
+    top: 12em;
+  }
+
+  @media (max-width: ${Breakpoints.phoneSmall}) {
+    top: 11em;
+    width: 15em;
   }
 `;
