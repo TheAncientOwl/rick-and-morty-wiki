@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import useEpisodeName from '../../utilities/useEpisodeName';
 
-import { Card, CardNumber, Background } from './CardElements';
+import { Background, Card, CardNumber } from './CardElements';
 import { Map, Key, Value } from './MapElements';
 import { FrontCard, CardImage, CardName, CardDetails } from './FrontCardElements';
 import { BackCard } from './BackCardElements';

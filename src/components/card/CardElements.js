@@ -63,17 +63,8 @@ export const Card = styled.div`
     z-index: 2000;
   }
 
-  &:hover ${CardNumber} {
-    background: ${({ theme }) => theme.navbar.titleColor};
-    transform: translate(50%, 82%);
-
-    @media (max-width: ${Breakpoints.phone}) {
-      transform: translate(50%, 10%);
-    }
-  }
-
   &:hover ${FrontCard} {
-    transform: translateY(-35%) scale(0.7);
+    transform: translateY(-50%) scale(0.7);
     z-index: 10;
     min-height: 18em;
 
@@ -82,18 +73,27 @@ export const Card = styled.div`
     }
   }
 
+  &:hover ${BackCard} {
+    transition: 250ms cubic-bezier(0.21, 1, 0.81, 1), opacity 100ms linear;
+    opacity: 1;
+  }
+
   &:hover ${Background} {
     transform: scale(1.2, 1);
     transition: 250ms cubic-bezier(0.21, 1, 0.81, 1), opacity 100ms linear;
     opacity: 1;
 
     @media (max-width: ${Breakpoints.phone}) {
-      transform: translateY(20%) scale(1.2, 1.6);
+      transform: translateY(20%) scale(1.2, 1.4);
     }
   }
 
-  &:hover ${BackCard} {
-    transition: 250ms cubic-bezier(0.21, 1, 0.81, 1), opacity 100ms linear;
-    opacity: 1;
+  &:hover ${CardNumber} {
+    background: ${({ theme }) => theme.navbar.titleColor};
+    transform: translate(50%, 82%);
+
+    @media (max-width: ${Breakpoints.phone}) {
+      transform: translate(50%, 80%);
+    }
   }
 `;
