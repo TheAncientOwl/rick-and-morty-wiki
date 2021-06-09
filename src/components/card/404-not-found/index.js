@@ -1,11 +1,10 @@
-import React from 'react';
-import CategoryType from '../../../constants/CategoryType';
 import { CardImage, CardName, VerticalDivider, Section, Title, Subtitle } from '../CardElements';
-import useInfo from '../../../hooks/useInfo';
 import { NotFoundCard, NotFoundDetails, NotFoundImageWrapper } from './NotFoundElements';
+import useCharactersData from '../../../hooks/useCharactersData';
+import { INVALID_PAGE } from '../../../App';
 
 export default function NotFound() {
-  const rickData = useInfo(CategoryType.character, { page: -1, name: 'Rick' });
+  const rickData = useCharactersData({ page: INVALID_PAGE, name: 'Rick' });
 
   return (
     <NotFoundCard>

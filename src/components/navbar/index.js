@@ -1,6 +1,6 @@
 import { NavContainer, LogoContainer, LogoImg, NavTitle } from './NavbarElements';
-import LogoSrc from '../../images/logo.jpg';
 import { moveToTopAnchor } from '../TopAnchor';
+import LogoSrc from '../../images/logo.jpg';
 
 export default function Navbar() {
   return (

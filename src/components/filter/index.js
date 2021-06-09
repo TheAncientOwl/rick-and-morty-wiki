@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, SimpleContainer, FilterForm, FilterInput, FilterLabel, FilterText } from './FilterElements';
 import { FaSearchengin } from 'react-icons/fa';
 import { BiReset } from 'react-icons/bi';
+import { Button, SimpleContainer, FilterForm, FilterInput, FilterLabel, FilterText } from './FilterElements';
 
 export default function Filter({ onValueChange, onReset, defaultText }) {
   const [value, setValue] = useState(defaultText);

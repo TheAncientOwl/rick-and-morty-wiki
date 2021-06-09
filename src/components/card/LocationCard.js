@@ -1,6 +1,5 @@
-import React from 'react';
-import { Card, CardDetails, CardName } from './CardElements';
 import PropTypes from 'prop-types';
+import { Card, CardDetails, CardName } from './CardElements';
 
 export default function LocationCard({ name }) {
   return (
