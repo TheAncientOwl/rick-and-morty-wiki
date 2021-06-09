@@ -16,7 +16,6 @@ export default function CharacterCard({
   lastKnownLocation,
   firstEpisodeUrl,
 }) {
-  console.log(status, species, origin, lastKnownLocation);
   const firstSeenIn = useEpisodeName(firstEpisodeUrl);
 
   return (
@@ -55,7 +54,7 @@ export default function CharacterCard({
 }
 
 CharacterCard.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
