@@ -5,6 +5,8 @@ import { Background, Card, CardNumber } from './CardElements';
 import { Map, Key, Value } from './MapElements';
 import { FrontCard, CardImage, CardName, CardDetails } from './FrontCardElements';
 import { BackCard } from './BackCardElements';
+import Scroll from 'react-scroll';
+import { useState } from 'react';
 
 export default function CharacterCard({
   id,
@@ -19,9 +21,28 @@ export default function CharacterCard({
   onClick,
 }) {
   const firstSeenIn = useEpisodeName(firstEpisodeUrl);
+  const [offset, setOffset] = useState(0);
+
+  const scrollHere = () => {
+    Scroll.animateScroll.scrollTo(offset - 200, {
+      duration: 1500,
+      delay: 100,
+      smooth: true,
+    });
+  };
 
   return (
-    <Card open={active} onClick={onClick}>
+    <Card
+      ref={element => {
+        if (!element || offset) return;
+        setOffset(element.getBoundingClientRect().top);
+        console.log(element.getBoundingClientRect().top);
+      }}
+      open={active}
+      onClick={e => {
+        onClick(e);
+        scrollHere();
+      }}>
       <CardNumber>{id}</CardNumber>
       <FrontCard>
         <CardImage src={image} alt={name} />
