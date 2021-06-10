@@ -34,7 +34,7 @@ export const LogoImg = styled.img`
   cursor: pointer;
 
   &:hover {
-    border: 0.17rem solid rgb(207, 17, 43);
+    transform: scale(1.25);
     border-radius: 50%;
   }
 `;
