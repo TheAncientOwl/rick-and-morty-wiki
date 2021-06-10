@@ -4,12 +4,12 @@ import { GiPreviousButton, GiNextButton } from 'react-icons/gi';
 import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
 
 export const PaginationContainer = styled.div`
-  margin-left: 1.2em;
-  font-size: 1.4em;
   display: flex;
   align-items: center;
-  color: ${({ theme }) => theme.navbar.titleColor};
+  margin-left: 1.2em;
+  font-size: 1.4em;
   font-weight: bold;
+  color: ${({ theme }) => theme.navbar.titleColor};
 
   @media (max-width: ${Breakpoints.phone}) {
     margin: 0;

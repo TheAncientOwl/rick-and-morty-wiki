@@ -4,15 +4,19 @@ import Breakpoints from '../../constants/Brakpoints';
 const NAV_HEIGHT = '5rem';
 
 export const NavContainer = styled.nav`
-  height: ${NAV_HEIGHT};
-  width: 100%;
+  z-index: 9999;
   position: sticky;
   top: 0;
-  padding: 0.2rem;
-  background: ${({ theme }) => theme.navbar.background};
+
   display: flex;
   align-items: center;
-  z-index: 9999;
+
+  width: 100%;
+  height: ${NAV_HEIGHT};
+
+  padding: 0.2rem;
+
+  background: ${({ theme }) => theme.navbar.background};
 `;
 
 export const LogoContainer = styled.div`
@@ -37,13 +41,15 @@ export const LogoImg = styled.img`
 
 export const NavTitle = styled.div(
   ({ theme }) => css`
-    color: ${theme.navbar.titleColor};
+    max-width: 55vw;
+
     font-size: 2.3rem;
     font-style: italic;
-    letter-spacing: 0.15rem;
     font-family: 'Creepster', cursive;
+
+    color: ${theme.navbar.titleColor};
+    letter-spacing: 0.15rem;
     text-shadow: 0.12rem 0.12rem ${theme.navbar.titleShadowColor};
-    max-width: 55vw;
     text-align: center;
 
     @media (max-width: ${Breakpoints.phone}) {

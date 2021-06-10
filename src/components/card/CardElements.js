@@ -5,12 +5,13 @@ import { BackCard } from './BackCardElements';
 import Breakpoints from '../../constants/Brakpoints';
 
 export const Deck = styled.div`
-  min-height: 75vh;
   display: grid;
   grid-template-columns: 18% 18% 18% 18%;
   justify-content: center;
   gap: 2rem;
+
   margin: 2rem 0;
+  min-height: 75vh;
 
   @media (max-width: ${Breakpoints.tablet}) {
     grid-template-columns: 27% 27% 27%;
@@ -23,14 +24,18 @@ export const Deck = styled.div`
 
 export const CardNumber = styled.div`
   position: absolute;
-  font-weight: bold;
   top: 0;
   right: 0.6em;
+
   background: rgba(0, 0, 0, 0.65);
+  color: ${({ theme }) => theme.text.secondary};
+
+  font-weight: bold;
+  font-family: 'Lobster', cursive;
+
   padding: 0.5em 0.5em 0.75em;
   clip-path: polygon(100% 0, 100% 100%, 50% 85%, 0% 100%, 0 0);
-  font-family: 'Lobster', cursive;
-  color: ${({ theme }) => theme.text.secondary};
+
   transition: transform 250ms cubic-bezier(0.21, 1, 0.81, 1);
 `;
 
@@ -56,8 +61,8 @@ export const Background = styled.div(
 
 const frontCardActive = css`
   transform: translateY(-50%) scale(0.7);
-  z-index: 10;
   min-height: 18em;
+  z-index: 10;
 
   ${Map} {
     display: none;
@@ -88,54 +93,39 @@ const cardNumberActive = css`
   }
 `;
 
+const cardActive = css`
+  z-index: 2000;
+
+  ${FrontCard} {
+    ${frontCardActive}
+  }
+
+  ${BackCard} {
+    ${backCardActive}
+  }
+
+  ${Background} {
+    ${backgroundActive}
+  }
+
+  ${CardNumber} {
+    ${cardNumberActive}
+  }
+`;
+
 export const Card = styled.div(
   ({ open }) => css`
-    margin: 0 auto;
     position: relative;
     font-size: 0.85rem;
+    margin: 0 auto;
     cursor: pointer;
+
+    ${open && cardActive};
 
     @media (min-width: ${Breakpoints.desktop}) {
       &:hover {
-        z-index: 2000;
-
-        ${FrontCard} {
-          ${frontCardActive}
-        }
-
-        ${BackCard} {
-          ${backCardActive}
-        }
-
-        ${Background} {
-          ${backgroundActive}
-        }
-
-        ${CardNumber} {
-          ${cardNumberActive}
-        }
+        ${cardActive}
       }
     }
-
-    ${open &&
-    css`
-      z-index: 2000;
-
-      ${FrontCard} {
-        ${frontCardActive}
-      }
-
-      ${BackCard} {
-        ${backCardActive}
-      }
-
-      ${Background} {
-        ${backgroundActive}
-      }
-
-      ${CardNumber} {
-        ${cardNumberActive}
-      }
-    `};
   `
 );

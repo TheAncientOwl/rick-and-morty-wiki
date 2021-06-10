@@ -4,11 +4,13 @@ export const FrontCard = styled.div(
   ({ theme }) => css`
     display: flex;
     flex-flow: column;
+    overflow: hidden;
+    min-height: 26em;
+
     border: 0.2em solid ${theme.navbar.titleColor};
     border-radius: 0.7em;
-    overflow: hidden;
+
     background: ${theme.navbar.titleColor};
-    min-height: 26em;
 
     transition: 250ms;
   `

@@ -43,17 +43,21 @@ export const FilterLabel = styled.label`
 
 export const FilterInput = styled.input(
   ({ theme }) => css`
+    display: inline;
+    width: 8em;
+
     color: ${theme.navbar.titleColor};
     font-size: 1.2em;
     font-family: 'Lobster', cursive;
+
     text-align: center;
+    text-transform: capitalize;
+
     padding: 0.15em 0;
     background: inherit;
+
     border: 0.14em solid ${theme.navbar.titleColor};
     border-radius: 0.4em;
-    width: 8em;
-    text-transform: capitalize;
-    display: inline;
 
     &:focus {
       outline: none !important;
@@ -70,12 +74,11 @@ export const FilterInput = styled.input(
 
 export const Button = styled.div(
   ({ theme }) => css`
+    display: inline;
+    text-align: center;
+    font-size: 1.5em;
     color: ${theme.navbar.titleColor};
     margin: 0.2em 0 0 0.4em;
-    font-size: 1.5em;
-    text-align: center;
-    display: inline;
-
     cursor: pointer;
 
     &:hover {
