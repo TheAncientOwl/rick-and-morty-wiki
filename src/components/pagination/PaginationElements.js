@@ -25,6 +25,7 @@ export const Button = styled.div(
 
     &:hover {
       color: ${theme.navbar.titleShadowColor};
+      transform: scale(1.2);
     }
   `
 );
