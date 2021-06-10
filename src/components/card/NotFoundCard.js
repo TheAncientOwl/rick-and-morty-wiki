@@ -7,44 +7,70 @@ import useCharactersData from '../../hooks/useCharactersData';
 import { INVALID_PAGE } from '../../App';
 import { useState } from 'react';
 
+import styled from 'styled-components';
+import Breakpoints from '../../constants/Brakpoints';
+
+const NotFoundContainer = styled.div`
+  width: 30vw;
+  padding: 2em;
+  margin: 2em auto;
+
+  @media (max-width: ${Breakpoints.tablet}) {
+    width: 50vw;
+    padding: 3em;
+  }
+
+  @media (max-width: ${Breakpoints.phone}) {
+    width: 70vw;
+    padding: 2em;
+  }
+`;
+
 export default function NotFound() {
   const [open, setOpen] = useState(false);
   const rickData = useCharactersData({ page: INVALID_PAGE, name: 'Rick' });
 
   return (
-    <Card open={open} onClick={() => setOpen(!open)}>
-      <CardNumber>404</CardNumber>
-      <FrontCard>
-        <CardImage src={rickData[0][0] ? rickData[0][0].image : ''} alt='Rick Sanchez' />
-        <CardDetails>
-          <CardName>~ 404 ~</CardName>
-          <Map>
-            <Key>First seen in: </Key>
-            <br />
-            <Value>The beginning o&apos; the time</Value>
-          </Map>
-        </CardDetails>
-      </FrontCard>
+    <NotFoundContainer onClick={() => setOpen(false)}>
+      <Card
+        open={open}
+        onClick={e => {
+          e.stopPropagation();
+          setOpen(!open);
+        }}>
+        <CardNumber>404</CardNumber>
+        <FrontCard>
+          <CardImage src={rickData[0][0] ? rickData[0][0].image : ''} alt='Rick Sanchez' />
+          <CardDetails>
+            <CardName>~ 404 ~</CardName>
+            <Map>
+              <Key>First seen in: </Key>
+              <br />
+              <Value>The beginning o&apos; the time</Value>
+            </Map>
+          </CardDetails>
+        </FrontCard>
 
-      <Background />
+        <Background />
 
-      <BackCard>
-        {[
-          { key: 'Morty:', value: 'Aw geez, Rick, something bad happened!', flex: true },
-          {
-            key: 'Rick:',
-            value: `Yes, obviously Morty. You're as dumb as they come. Someone tried to find something that didn't exist.`,
-            flex: true,
-          },
-          { key: 'Morty:', value: 'Aw ...', flex: true },
-        ].map((item, index) => (
-          <Map flex={item.flex} key={index}>
-            <Key>{item.key}</Key>
-            <Value>{item.value}</Value>
-          </Map>
-        ))}
-      </BackCard>
-    </Card>
+        <BackCard>
+          {[
+            { key: 'Morty:', value: 'Aw geez, Rick, something bad happened!', flex: true },
+            {
+              key: 'Rick:',
+              value: `Yes, obviously Morty. You're as dumb as they come. Someone tried to find something that didn't exist.`,
+              flex: true,
+            },
+            { key: 'Morty:', value: 'Aw ...', flex: true },
+          ].map((item, index) => (
+            <Map flex={item.flex} key={index}>
+              <Key>{item.key}</Key>
+              <Value>{item.value}</Value>
+            </Map>
+          ))}
+        </BackCard>
+      </Card>
+    </NotFoundContainer>
   );
 }
 

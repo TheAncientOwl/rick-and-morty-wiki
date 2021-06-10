@@ -60,33 +60,34 @@ export default function App() {
     </>
   );
 
-  const cards =
+  const deckOrNotFound =
     data.length == 0 ? (
       <NotFound />
     ) : (
       <>
-        {data.map((item, index) => (
-          <CharacterCard
-            key={index}
-            id={item.id}
-            active={item.id == activeCardId}
-            onClick={e => {
-              e.stopPropagation();
-              setActiveCardId(activeCardId == item.id ? 0 : item.id);
-            }}
-            image={item.image || ''}
-            name={item.name || ''}
-            status={item.status || ''}
-            species={item.species || ''}
-            origin={item.origin ? item.origin.name : ''}
-            lastKnownLocation={item.location ? item.location.name : ''}
-            firstEpisodeUrl={item.episode[0]}
-          />
-        ))}
+        <Deck onClick={() => setActiveCardId(INVALID_CARD_ID)}>
+          {data.map((item, index) => (
+            <CharacterCard
+              key={index}
+              id={item.id}
+              active={item.id == activeCardId}
+              onClick={e => {
+                e.stopPropagation();
+                setActiveCardId(activeCardId == item.id ? 0 : item.id);
+              }}
+              image={item.image || ''}
+              name={item.name || ''}
+              status={item.status || ''}
+              species={item.species || ''}
+              origin={item.origin ? item.origin.name : ''}
+              lastKnownLocation={item.location ? item.location.name : ''}
+              firstEpisodeUrl={item.episode[0]}
+            />
+          ))}
+        </Deck>
+        <SimpleContainer style={{ justifyContent: 'center' }}>{pagination}</SimpleContainer>
       </>
     );
-
-  const resetActiveCardId = () => setActiveCardId(INVALID_CARD_ID);
 
   return (
     <>
@@ -98,9 +99,7 @@ export default function App() {
         </SimpleContainer>
         <TopAnchor />
 
-        <Deck onClick={resetActiveCardId}>{cards}</Deck>
-
-        <SimpleContainer style={{ justifyContent: 'center' }}>{pagination}</SimpleContainer>
+        {deckOrNotFound}
       </ThemeProvider>
     </>
   );
