@@ -36,7 +36,6 @@ export default function CharacterCard({
       ref={element => {
         if (!element || offset) return;
         setOffset(element.getBoundingClientRect().top);
-        console.log(element.getBoundingClientRect().top);
       }}
       open={active}
       onClick={e => {
