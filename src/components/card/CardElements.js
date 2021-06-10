@@ -95,23 +95,25 @@ export const Card = styled.div(
     font-size: 0.85rem;
     cursor: pointer;
 
-    &:hover {
-      z-index: 2000;
+    @media (min-width: ${Breakpoints.desktop}) {
+      &:hover {
+        z-index: 2000;
 
-      ${FrontCard} {
-        ${frontCardActive}
-      }
+        ${FrontCard} {
+          ${frontCardActive}
+        }
 
-      ${BackCard} {
-        ${backCardActive}
-      }
+        ${BackCard} {
+          ${backCardActive}
+        }
 
-      ${Background} {
-        ${backgroundActive}
-      }
+        ${Background} {
+          ${backgroundActive}
+        }
 
-      ${CardNumber} {
-        ${cardNumberActive}
+        ${CardNumber} {
+          ${cardNumberActive}
+        }
       }
     }
 
