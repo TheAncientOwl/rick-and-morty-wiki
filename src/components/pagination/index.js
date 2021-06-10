@@ -1,24 +1,28 @@
 import PropTypes from 'prop-types';
-import {
-  PageNumber,
-  PageSeparator,
-  PaginationContainer,
-  PrevButton,
-  NextButton,
-  LastButton,
-  FirstButton,
-} from './PaginationElements';
+import { PageNumber, PageSeparator, PaginationContainer, Button } from './PaginationElements';
+import { GiPreviousButton, GiNextButton } from 'react-icons/gi';
+import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
 
 export default function Pagination({ currentPage, pages, onPrevClick, onNextClick, jumpToFirst, jumpToLast }) {
   return (
     <PaginationContainer>
-      <FirstButton onClick={jumpToFirst} />
-      <PrevButton onClick={onPrevClick} />
+      <Button onClick={jumpToFirst}>
+        <BsFillSkipBackwardFill />
+      </Button>
+      <Button onClick={onPrevClick}>
+        <GiPreviousButton />
+      </Button>
+
       <PageNumber>{currentPage}</PageNumber>
       <PageSeparator>/</PageSeparator>
       <PageNumber>{pages}</PageNumber>
-      <NextButton onClick={onNextClick} />
-      <LastButton onClick={jumpToLast} />
+
+      <Button onClick={onNextClick}>
+        <GiNextButton />
+      </Button>
+      <Button onClick={jumpToLast}>
+        <BsFillSkipForwardFill />
+      </Button>
     </PaginationContainer>
   );
 }
