@@ -54,46 +54,86 @@ export const Background = styled.div(
   `
 );
 
-export const Card = styled.div`
-  margin: 0 auto;
-  position: relative;
-  font-size: 0.85rem;
+const frontCardActive = css`
+  transform: translateY(-50%) scale(0.7);
+  z-index: 10;
+  min-height: 18em;
 
-  &:hover {
-    z-index: 2000;
-  }
-
-  &:hover ${FrontCard} {
-    transform: translateY(-50%) scale(0.7);
-    z-index: 10;
-    min-height: 18em;
-
-    ${Map} {
-      display: none;
-    }
-  }
-
-  &:hover ${BackCard} {
-    transition: 250ms cubic-bezier(0.21, 1, 0.81, 1), opacity 100ms linear;
-    opacity: 1;
-  }
-
-  &:hover ${Background} {
-    transform: scale(1.2, 1);
-    transition: 250ms cubic-bezier(0.21, 1, 0.81, 1), opacity 100ms linear;
-    opacity: 1;
-
-    @media (max-width: ${Breakpoints.phone}) {
-      transform: translateY(20%) scale(1.2, 1.4);
-    }
-  }
-
-  &:hover ${CardNumber} {
-    background: ${({ theme }) => theme.navbar.titleColor};
-    transform: translate(50%, 82%);
-
-    @media (max-width: ${Breakpoints.phone}) {
-      transform: translate(50%, 80%);
-    }
+  ${Map} {
+    display: none;
   }
 `;
+
+const backCardActive = css`
+  transition: 250ms cubic-bezier(0.21, 1, 0.81, 1), opacity 100ms linear;
+  opacity: 1;
+`;
+
+const backgroundActive = css`
+  transform: scale(1.2, 1);
+  transition: 250ms cubic-bezier(0.21, 1, 0.81, 1), opacity 100ms linear;
+  opacity: 1;
+
+  @media (max-width: ${Breakpoints.phone}) {
+    transform: translateY(20%) scale(1.2, 1.4);
+  }
+`;
+
+const cardNumberActive = css`
+  background: ${({ theme }) => theme.navbar.titleColor};
+  transform: translate(50%, 82%);
+
+  @media (max-width: ${Breakpoints.phone}) {
+    transform: translate(50%, 80%);
+  }
+`;
+
+export const Card = styled.div(
+  ({ open }) => css`
+    margin: 0 auto;
+    position: relative;
+    font-size: 0.85rem;
+    cursor: pointer;
+
+    &:hover {
+      z-index: 2000;
+
+      ${FrontCard} {
+        ${frontCardActive}
+      }
+
+      ${BackCard} {
+        ${backCardActive}
+      }
+
+      ${Background} {
+        ${backgroundActive}
+      }
+
+      ${CardNumber} {
+        ${cardNumberActive}
+      }
+    }
+
+    ${open &&
+    css`
+      z-index: 2000;
+
+      ${FrontCard} {
+        ${frontCardActive}
+      }
+
+      ${BackCard} {
+        ${backCardActive}
+      }
+
+      ${Background} {
+        ${backgroundActive}
+      }
+
+      ${CardNumber} {
+        ${cardNumberActive}
+      }
+    `};
+  `
+);

@@ -15,11 +15,13 @@ export default function CharacterCard({
   origin,
   lastKnownLocation,
   firstEpisodeUrl,
+  active,
+  onClick,
 }) {
   const firstSeenIn = useEpisodeName(firstEpisodeUrl);
 
   return (
-    <Card>
+    <Card open={active} onClick={onClick}>
       <CardNumber>{id}</CardNumber>
       <FrontCard>
         <CardImage src={image} alt={name} />
@@ -62,4 +64,6 @@ CharacterCard.propTypes = {
   origin: PropTypes.string.isRequired,
   lastKnownLocation: PropTypes.string.isRequired,
   firstEpisodeUrl: PropTypes.string.isRequired,
+  active: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };

@@ -15,8 +15,10 @@ import useCharactersData from './hooks/useCharactersData';
 import CharacterCard from './components/card';
 
 export const INVALID_PAGE = -1;
+const INVALID_CARD_ID = -1;
 
 export default function App() {
+  const [activeCardId, setActiveCardId] = useState(INVALID_CARD_ID);
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState('');
   const [data, numberOfPages] = useCharactersData({ page: page, name: filter });
@@ -67,6 +69,11 @@ export default function App() {
           <CharacterCard
             key={index}
             id={item.id}
+            active={item.id == activeCardId}
+            onClick={e => {
+              e.stopPropagation();
+              setActiveCardId(activeCardId == item.id ? 0 : item.id);
+            }}
             image={item.image || ''}
             name={item.name || ''}
             status={item.status || ''}
@@ -79,6 +86,8 @@ export default function App() {
       </>
     );
 
+  const resetActiveCardId = () => setActiveCardId(INVALID_CARD_ID);
+
   return (
     <>
       <ThemeProvider theme={AppTheme}>
@@ -89,7 +98,7 @@ export default function App() {
         </SimpleContainer>
         <TopAnchor />
 
-        <Deck>{cards}</Deck>
+        <Deck onClick={resetActiveCardId}>{cards}</Deck>
 
         <SimpleContainer style={{ justifyContent: 'center' }}>{pagination}</SimpleContainer>
       </ThemeProvider>
