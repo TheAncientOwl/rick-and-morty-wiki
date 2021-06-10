@@ -18,6 +18,7 @@ export const INVALID_PAGE = -1;
 const INVALID_CARD_ID = -1;
 
 export default function App() {
+  console.log('<*> Rendering App...');
   const [activeCardId, setActiveCardId] = useState(INVALID_CARD_ID);
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState('');
