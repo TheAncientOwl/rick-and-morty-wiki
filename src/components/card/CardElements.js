@@ -10,7 +10,7 @@ export const Deck = styled.div`
   justify-content: center;
   gap: 2rem;
 
-  margin: 2rem 0;
+  margin: 3.2rem 0;
   min-height: 75vh;
 
   @media (max-width: ${Breakpoints.tablet}) {
@@ -43,17 +43,13 @@ export const Background = styled.div(
   ({ theme }) => css`
     position: absolute;
     top: 2em;
-    bottom: 0;
-    left: 0;
-    right: 0;
     z-index: -1;
 
-    transform: scale(0.1, 0.6);
+    transform: scale(0.4, 0.8);
 
     background: ${theme.navbar.background};
     border: 0.2em solid ${theme.navbar.titleColor};
     border-radius: 0.8em;
-    overflow: hidden;
 
     opacity: 0;
   `
@@ -78,9 +74,11 @@ const backgroundActive = css`
   transform: scale(1.2, 1);
   transition: 250ms cubic-bezier(0.21, 1, 0.81, 1), opacity 100ms linear;
   opacity: 1;
+  min-height: 24em;
 
   @media (max-width: ${Breakpoints.phone}) {
     transform: translateY(20%) scale(1.2, 1.4);
+    min-height: 18em;
   }
 `;
 

@@ -35,22 +35,22 @@ export default function CharacterCard({
         </CardDetails>
       </FrontCard>
 
-      <Background />
-
-      <BackCard>
-        {[
-          { key: 'Status:', value: status, flex: true },
-          { key: 'Species:', value: species, flex: true },
-          { key: 'First seen in:', value: firstSeenIn, flex: true },
-          { key: 'Origin:', value: origin, flex: true },
-          { key: 'Last known location:', value: lastKnownLocation },
-        ].map((item, index) => (
-          <Map flex={item.flex} key={index}>
-            <Key>{item.key}</Key>
-            <Value>{item.value}</Value>
-          </Map>
-        ))}
-      </BackCard>
+      <Background>
+        <BackCard>
+          {[
+            { key: 'Status:', value: status, flex: true },
+            { key: 'Species:', value: species, flex: true },
+            { key: 'First seen in:', value: firstSeenIn, flex: true },
+            { key: 'Origin:', value: origin, flex: true },
+            { key: 'Last known location:', value: lastKnownLocation },
+          ].map((item, index) => (
+            <Map flex={item.flex} key={index}>
+              <Key>{item.key}</Key>
+              <Value>{item.value}</Value>
+            </Map>
+          ))}
+        </BackCard>
+      </Background>
     </Card>
   );
 }

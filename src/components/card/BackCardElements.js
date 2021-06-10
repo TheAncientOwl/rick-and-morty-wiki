@@ -1,13 +1,10 @@
 import styled from 'styled-components';
+import Breakpoints from '../../constants/Brakpoints';
 
 export const BackCard = styled.div`
-  position: absolute;
-  top: 9em;
-  left: 50%;
-  transform: translateX(-50%);
+  padding: 6.2em 0.6em 1em 0.6em;
 
-  opacity: 0;
-
-  min-height: 12em;
-  width: 100%;
+  @media (max-width: ${Breakpoints.phone}) {
+    padding-top: 4.5em;
+  }
 `;
