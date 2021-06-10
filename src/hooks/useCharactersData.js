@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 import { INVALID_PAGE } from '../App';
 
 export default function useCharactersData(options = { page: 1, name: '' }) {
-  const [data, setData] = useState({ loaded: false, info: { pages: 0 }, results: [] });
+  const [data, setData] = useState({ info: { pages: 0 }, results: [] });
 
   useEffect(() => {
-    console.log('>> Fetching characters.');
     const fetchData = async () => {
       const requestLink =
         options.page != INVALID_PAGE
