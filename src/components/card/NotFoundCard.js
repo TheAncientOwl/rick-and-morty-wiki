@@ -1,10 +1,10 @@
-import { Card, CardNumber, Background } from '../CardElements';
-import { Map, Key, Value } from '../MapElements';
-import { FrontCard, CardImage, CardName, CardDetails } from '../FrontCardElements';
-import { BackCard } from '../BackCardElements';
+import { Card, CardNumber, Background } from './CardElements';
+import { Map, Key, Value } from './MapElements';
+import { FrontCard, CardImage, CardName, CardDetails } from './FrontCardElements';
+import { BackCard } from './BackCardElements';
 
-import useCharactersData from '../../../hooks/useCharactersData';
-import { INVALID_PAGE } from '../../../App';
+import useCharactersData from '../../hooks/useCharactersData';
+import { INVALID_PAGE } from '../../App';
 
 export default function NotFound() {
   const rickData = useCharactersData({ page: INVALID_PAGE, name: 'Rick' });

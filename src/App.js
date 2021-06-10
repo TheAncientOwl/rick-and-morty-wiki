@@ -10,7 +10,7 @@ import { SimpleContainer } from './components/filter/FilterElements';
 import Filter from './components/filter';
 
 import { Deck } from './components/card/CardElements';
-import NotFound from './components/card/404-not-found';
+import NotFound from './components/card/NotFoundCard';
 import useCharactersData from './hooks/useCharactersData';
 import CharacterCard from './components/card';
 
