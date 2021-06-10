@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import useEpisodeName from '../../utilities/useEpisodeName';
+import useEpisodeName from '../../hooks/useEpisodeName';
 
 import { Background, Card, CardNumber } from './CardElements';
 import { Map, Key, Value } from './MapElements';
