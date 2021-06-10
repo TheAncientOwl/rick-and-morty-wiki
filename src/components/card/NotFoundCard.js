@@ -5,12 +5,14 @@ import { BackCard } from './BackCardElements';
 
 import useCharactersData from '../../hooks/useCharactersData';
 import { INVALID_PAGE } from '../../App';
+import { useState } from 'react';
 
 export default function NotFound() {
+  const [open, setOpen] = useState(false);
   const rickData = useCharactersData({ page: INVALID_PAGE, name: 'Rick' });
 
   return (
-    <Card>
+    <Card open={open} onClick={() => setOpen(!open)}>
       <CardNumber>404</CardNumber>
       <FrontCard>
         <CardImage src={rickData[0][0] ? rickData[0][0].image : ''} alt='Rick Sanchez' />
