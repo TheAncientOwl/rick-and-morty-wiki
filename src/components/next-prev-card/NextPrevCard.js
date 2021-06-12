@@ -6,24 +6,24 @@ import PropTypes from 'prop-types';
 export default function NextPrevCard({ onPrevClick, onNextClick }) {
   return (
     <>
-      <NextPrevContainer isPrev>
+      <NextPrevContainer
+        onClick={e => {
+          e.stopPropagation();
+          onPrevClick();
+        }}
+        isPrev>
         <Button style={{ margin: '0' }}>
-          <FcPrevious
-            onClick={e => {
-              e.stopPropagation();
-              onPrevClick();
-            }}
-          />
+          <FcPrevious />
         </Button>
       </NextPrevContainer>
-      <NextPrevContainer>
+
+      <NextPrevContainer
+        onClick={e => {
+          e.stopPropagation();
+          onNextClick();
+        }}>
         <Button style={{ margin: '0' }}>
-          <FcNext
-            onClick={e => {
-              e.stopPropagation();
-              onNextClick();
-            }}
-          />
+          <FcNext />
         </Button>
       </NextPrevContainer>
     </>
