@@ -12,7 +12,7 @@ export default function useCharactersData(options = { page: 1, name: '' }) {
           : `https://rickandmortyapi.com/api/character/?name=${options.name}`;
 
       try {
-        const response = await fetch(requestLink);
+        const response = await fetch(requestLink, { method: 'GET', mode: 'cors' });
         const json = await response.json();
         if (json.error) setData({ info: { pages: 0 }, results: [] });
         else setData(json);
