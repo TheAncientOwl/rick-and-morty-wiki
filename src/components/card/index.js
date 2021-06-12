@@ -5,8 +5,7 @@ import { Background, Card, CardNumber } from './CardElements';
 import { Map, Key, Value } from './MapElements';
 import { FrontCard, CardImage, CardName, CardDetails } from './FrontCardElements';
 import { BackCard } from './BackCardElements';
-import Scroll from 'react-scroll';
-import { useState } from 'react';
+import { useEffect } from 'react';
 
 export default function CharacterCard({
   id,
@@ -21,27 +20,16 @@ export default function CharacterCard({
   onClick,
 }) {
   const firstSeenIn = useEpisodeName(firstEpisodeUrl);
-  const [offset, setOffset] = useState(0);
 
-  const scrollHere = () => {
-    Scroll.animateScroll.scrollTo(offset - 185, {
-      duration: 550,
-      delay: 0,
-      smooth: true,
-    });
-  };
+  useEffect(() => {
+    const element = document.getElementById(id);
+    if (!element) {
+      console.error(`Cannot find element with id ${id}`);
+    }
+  }, []);
 
   return (
-    <Card
-      ref={element => {
-        if (!element || offset) return;
-        setOffset(element.getBoundingClientRect().top);
-      }}
-      open={active}
-      onClick={e => {
-        onClick(e);
-        scrollHere();
-      }}>
+    <Card id={id} open={active} onClick={e => onClick(e)}>
       <CardNumber>{id}</CardNumber>
       <FrontCard>
         <CardImage src={image} alt={name} />

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { moveToTopAnchor, TopAnchor } from './components/TopAnchor';
 import AppTheme from './constants/AppTheme';
@@ -13,15 +13,47 @@ import { Deck } from './components/card/CardElements';
 import NotFound from './components/card/NotFoundCard';
 import useCharactersData from './hooks/useCharactersData';
 import CharacterCard from './components/card';
+import NextPrevCard from './components/next-prev-card/NextPrevCard';
+import Scroll from 'react-scroll';
 
 export const INVALID_PAGE = -1;
 const INVALID_CARD_ID = -1;
+
+const scrollTo = offset => {
+  Scroll.animateScroll.scrollTo(offset, {
+    duration: 550,
+    delay: 0,
+    smooth: true,
+  });
+};
 
 export default function App() {
   const [activeCardId, setActiveCardId] = useState(INVALID_CARD_ID);
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState('');
   const [data, numberOfPages] = useCharactersData({ page: page, name: filter });
+  const [offsets, setOffsets] = useState([]);
+
+  useEffect(() => {
+    setActiveCardId(data[0]?.id - 1);
+    const pullOffsets = () => {
+      const $offsets = [];
+
+      for (let item of data) {
+        const element = document.getElementById(item.id);
+        if (!element) {
+          console.error(`Cannot find element with id ${item.to}`);
+          $offsets.push(0);
+          continue;
+        }
+        $offsets.push(element.offsetTop - 185);
+      }
+
+      setOffsets($offsets);
+    };
+
+    pullOffsets();
+  }, [data]);
 
   const handleFilterChange = value => {
     setPage(INVALID_PAGE);
@@ -31,6 +63,23 @@ export default function App() {
   const handleFilterReset = () => {
     setPage(1);
     setFilter('');
+  };
+
+  const handlePrevClick = () => {
+    const newActiveCardId = Math.max(data[0].id, activeCardId - 1);
+    const cardOffsetIndex = Math.max(-1, (newActiveCardId - 1) % data.length);
+
+    setActiveCardId(newActiveCardId);
+    scrollTo(offsets[cardOffsetIndex]);
+  };
+
+  const handleNextClick = () => {
+    const lastId = data[data.length - 1].id;
+    const newActiveCardId = Math.min(lastId, activeCardId + 1);
+    const cardOffsetIndex = Math.min(data.length, (newActiveCardId - 1) % data.length);
+
+    setActiveCardId(newActiveCardId);
+    scrollTo(offsets[cardOffsetIndex]);
   };
 
   const pagination = (
@@ -74,14 +123,15 @@ export default function App() {
               onClick={e => {
                 e.stopPropagation();
                 setActiveCardId(activeCardId == item.id ? 0 : item.id);
+                scrollTo(offsets[index]);
               }}
-              image={item.image || ''}
-              name={item.name || ''}
-              status={item.status || ''}
-              species={item.species || ''}
+              image={item.image ?? ''}
+              name={item.name ?? ''}
+              status={item.status ?? ''}
+              species={item.species ?? ''}
               origin={item.origin ? item.origin.name : ''}
               lastKnownLocation={item.location ? item.location.name : ''}
-              firstEpisodeUrl={item.episode[0]}
+              firstEpisodeUrl={item.episode[0] ?? ''}
             />
           ))}
         </Deck>
@@ -92,13 +142,13 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={AppTheme}>
+        <NextPrevCard onPrevClick={handlePrevClick} onNextClick={handleNextClick} />
         <Navbar />
         <SimpleContainer>
           <Filter onValueChange={handleFilterChange} onReset={handleFilterReset} defaultText={'Character'} />
           {pagination}
         </SimpleContainer>
         <TopAnchor />
-
         {deckOrNotFound}
       </ThemeProvider>
     </>
