@@ -5,7 +5,6 @@ import { Background, Card, CardNumber } from './CardElements';
 import { Map, Key, Value } from './MapElements';
 import { FrontCard, CardImage, CardName, CardDetails } from './FrontCardElements';
 import { BackCard } from './BackCardElements';
-import { useEffect } from 'react';
 
 export default function CharacterCard({
   id,
@@ -20,13 +19,6 @@ export default function CharacterCard({
   onClick,
 }) {
   const firstSeenIn = useEpisodeName(firstEpisodeUrl);
-
-  useEffect(() => {
-    const element = document.getElementById(id);
-    if (!element) {
-      console.error(`Cannot find element with id ${id}`);
-    }
-  }, []);
 
   return (
     <Card id={id} open={active} onClick={e => onClick(e)}>
