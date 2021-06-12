@@ -7,13 +7,23 @@ export default function NextPrevCard({ onPrevClick, onNextClick }) {
   return (
     <>
       <NextPrevContainer isPrev>
-        <Button>
-          <FcPrevious onClick={onPrevClick} />
+        <Button style={{ margin: '0' }}>
+          <FcPrevious
+            onClick={e => {
+              e.stopPropagation();
+              onPrevClick();
+            }}
+          />
         </Button>
       </NextPrevContainer>
       <NextPrevContainer>
-        <Button>
-          <FcNext onClick={onNextClick} />
+        <Button style={{ margin: '0' }}>
+          <FcNext
+            onClick={e => {
+              e.stopPropagation();
+              onNextClick();
+            }}
+          />
         </Button>
       </NextPrevContainer>
     </>
