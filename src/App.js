@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { moveToTopAnchor, TopAnchor } from './components/TopAnchor';
 import AppTheme from './constants/AppTheme';
@@ -22,6 +22,10 @@ export default function App() {
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState('');
   const [data, numberOfPages] = useCharactersData({ page: page, name: filter });
+
+  useEffect(() => {
+    moveToTopAnchor();
+  }, []);
 
   const handleFilterChange = value => {
     setPage(INVALID_PAGE);
