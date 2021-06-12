@@ -135,7 +135,9 @@ export default function App() {
             />
           ))}
         </Deck>
-        <SimpleContainer style={{ justifyContent: 'center' }}>{pagination}</SimpleContainer>
+        <SimpleContainer style={{ justifyContent: 'center', position: 'sticky', bottom: '0' }}>
+          {pagination}
+        </SimpleContainer>
       </>
     );
 
