@@ -24,7 +24,7 @@ export default function CharacterCard({
   const [offset, setOffset] = useState(0);
 
   const scrollHere = () => {
-    Scroll.animateScroll.scrollTo(offset - 200, {
+    Scroll.animateScroll.scrollTo(offset - 185, {
       duration: 550,
       delay: 0,
       smooth: true,

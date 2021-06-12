@@ -18,7 +18,7 @@ export const Deck = styled.div`
   }
 
   @media (max-width: ${Breakpoints.phone}) {
-    grid-template-columns: 60%;
+    grid-template-columns: 55%;
   }
 `;
 
